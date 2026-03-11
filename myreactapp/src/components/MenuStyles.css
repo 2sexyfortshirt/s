@@ -1,0 +1,106 @@
+/* General body styles */
+body {
+  margin: 0;
+  height: 200vh; /* Make the body tall to allow scrolling */
+  transition: background 0.5s ease; /* Smooth transition for background change */
+  background: linear-gradient(135deg, #f0a830, #8dc26f); /* Оригинальный градиентный фон */
+  /* Light background color for contrast */
+}
+
+
+
+* Стиль для модального окна */
+.menu-modal-content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Чтобы контент располагался по вертикали */
+  justify-content: flex-start; /* Размещение элементов сверху */
+}
+
+/* Стиль для карточки блюда */
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  transition: transform 0.3s ease;
+  height: auto; /* Убираем фиксированную высоту для лучшего распределения */
+}
+
+/* Контейнер для изображения и текста в карточке */
+.menu-card .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Стили изображения блюда */
+.menu-card img {
+  width: 80%; /* Сделать изображение шириной 80% от родительского контейнера */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+  object-fit: cover; /* Сохранить покрытие контейнера без искажения */
+  border-radius: 8px; /* Округлые углы */
+  margin-bottom: 0.5rem; /* Отступ снизу */
+}
+
+/* Стили для названия блюда */
+.menu-card h6 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Описание блюда */
+.menu-card .description {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Кнопка добавления в корзину */
+.menu-card .button-custom {
+  background-color: #388e3c;
+  color: white;
+  border-radius: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.menu-card .button-custom:hover {
+  background-color: #66bb6a;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 600px) {
+  .menu-modal-content {
+    padding: 1rem;
+  }
+  .menu-card {
+    margin: 1rem 0;
+    height: auto; /* Оставляем высоту авто для мобильных устройств */
+  }
+  .menu-card img {
+    height: 150px; /* Меньшая высота для изображения на мобильных */
+  }
+  .menu-card h6 {
+    font-size: 1.5rem;
+  }
+  .menu-card .description {
+    font-size: 1rem;
+  }
+}

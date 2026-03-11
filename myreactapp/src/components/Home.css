@@ -1,0 +1,64 @@
+/* Основные стили */
+.slider-container {
+  margin-top: 100px;
+  padding: 0 25px;
+  position: relative;
+  max-width: auto;
+  margin-left: 7px;
+  margin-right: auto;
+  justify-content: center ;
+}
+@media (max-width: 600px) {
+
+    .slider-container {
+      max-width: auto;
+      padding: 0 20px;
+
+
+    }
+
+
+  .slick-slide img {
+
+
+    height: 150px !important;
+    width: 95 !important;
+
+  }
+}
+.map-container {
+ margin-top: 150px;
+ padding: 0 20px;
+
+ justify-content: center;
+    margin-left: auto;
+     margin-right: auto;
+     max-width: 90%;
+
+
+@media (max-width: 600px) {
+
+.map-container {
+
+
+    padding: 0 10px; /* Уменьшаем отступы на мобильных устройствах */
+    max-width: 100%; /* Карта будет занимать всю ширину экрана */
+  }
+
+   iframe {
+   margin-top: -50px;
+
+    width: 100% !important; /* Ширина карты будет 100% */
+    height: 250px !important; /* Уменьшаем высоту карты для мобильных устройств */
+  }
+
+
+
+
+
+
+
+
+}
+
+}

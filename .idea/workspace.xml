@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/myreact/.elasticbeanstalk/config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/mychiko/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/mychiko/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/mychiko/consumers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/mychiko/routing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/mychiko/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/mychiko/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/mychiko/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/dump.rdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/frontend.Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/icons/icon-192x192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/icons/icon-512x512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/images/chiko.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/images/image1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/images/image2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/images/image3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/images/steak1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/images/steak2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/images/steak5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/public/sound/cow.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/About.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/About.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/AddToCartButton.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Cart.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Cart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Contact.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Contact.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Logout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/MenuList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/MenuStyles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Navbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/OrderUpdates.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/components/Reviews.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactapp/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0002_cart_cartitem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0003_remove_cartitem_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0004_remove_cart_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0005_order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0006_cart_is_ordered.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0007_ingredients_dish_ingredients.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0008_cartitem_ingredients.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0009_alter_cartitem_dish.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0010_alter_ingredients_extra_cost.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0011_order_phone_number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0012_order_created_at_order_delivery_address.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0013_dish_picture.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0014_cartitem_custom_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0015_remove_cartitem_custom_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0016_cartitem_menu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0017_cartitem_custom_dish_type.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0018_cartitem_custom_dish_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0019_order_delivery_latitude_order_delivery_longitude.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0020_cart_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0021_remove_cart_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0022_cart_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0023_review.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/0024_cartitem_item_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/services.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/myreactchiko/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreact/start.sh" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/myreact/myreactapp/node_modules/react-scripts/bin/react-scripts.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/myreact/myreactapp/node_modules/react-scripts/config/webpack.config.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2livQDrPfiTBtTR9ZaEb392SmsU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myreact/myreactapp/build/static" />
+      <recent name="$PROJECT_DIR$/myreact/myreactapp/public/images" />
+      <recent name="$PROJECT_DIR$/myreact/myreactapp/build/images" />
+      <recent name="$PROJECT_DIR$/myreact/staticfiles/build/images" />
+      <recent name="$PROJECT_DIR$/myreact/staticfiles/images" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="" />
+      <created>1725675692461</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725675692461</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="nginx.conf" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="597" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="598" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="617" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="618" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="619" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="620" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="621" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="688" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>221</line>
+          <option name="timeStamp" value="777" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="778" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>223</line>
+          <option name="timeStamp" value="779" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>61</line>
+          <option name="timeStamp" value="1052" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="1053" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>64</line>
+          <option name="timeStamp" value="1054" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="1055" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="1056" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>227</line>
+          <option name="timeStamp" value="1078" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="1079" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>188</line>
+          <option name="timeStamp" value="1210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="1211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="1212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/utils.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="1213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="1247" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="1255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>3</line>
+          <option name="timeStamp" value="1262" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="1263" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="1290" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="1292" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="1293" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="1294" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="1295" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="1296" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="1297" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="1298" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="1299" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="1301" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="1302" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="1303" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="1304" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="1305" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="1306" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="1311" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="1312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/services.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="1313" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="1356" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>121</line>
+          <option name="timeStamp" value="1357" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>122</line>
+          <option name="timeStamp" value="1358" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>123</line>
+          <option name="timeStamp" value="1359" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>124</line>
+          <option name="timeStamp" value="1360" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>125</line>
+          <option name="timeStamp" value="1361" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>128</line>
+          <option name="timeStamp" value="1389" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>129</line>
+          <option name="timeStamp" value="1390" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>130</line>
+          <option name="timeStamp" value="1391" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>131</line>
+          <option name="timeStamp" value="1392" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="1409" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="1410" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="1411" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>107</line>
+          <option name="timeStamp" value="1412" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myreact/myreactchiko/views.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="1413" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

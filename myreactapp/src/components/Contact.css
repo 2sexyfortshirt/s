@@ -1,0 +1,54 @@
+/* Contact.css */
+
+.contact-container {
+      margin: 200px auto 0;
+    max-width: 800px; /* Максимальная ширина контейнера */
+    min-height: 400px;/* Центрирование контейнера */
+    padding: 20px; /* Отступы вокруг контейнера */
+    background-color: grey;
+    border-radius: 8px; /* Скругленные углы */
+    /* Легкая тень */
+}
+
+.contact-container h4 {
+    color: #333; /* Цвет заголовков */
+    margin-bottom: 10px; /* Отступ снизу */
+    font-family: 'Roboto', sans-serif; /* Шрифт заголовков */
+}
+
+.contact-container p {
+    color: #555; /* Цвет текста */
+    line-height: 1.6; /* Высота строки для лучшей читаемости */
+}
+
+.social-links  {
+
+
+    display: flex; /* Flexbox для расположения иконок в ряд */
+    justify-content: center; /* Центрирование иконок */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.social-links a {
+    margin: 0 10px; /* Горизонтальные отступы между иконками */
+}
+
+.social-links img {
+        margin: 100px auto 0;
+    width: 40px; /* Ширина иконок */
+    height: 40px; /* Высота иконок */
+
+    transition: transform 0.2s; /* Плавный эффект при наведении */
+}
+
+.social-links img:hover {
+    transform: scale(1.1); /* Увеличение иконки при наведении */
+}
+
+@media  (max-width: 768px) {
+.contact-container {
+      margin-top: 90px;
+      padding: 10px;
+      width: 80%;
+    }
+}

@@ -1,0 +1,105 @@
+/* Cart.css */
+
+.cart-container {
+  max-width: 800px;
+   margin-top: 90px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f7f1; /* Светлый фон */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #8b4513; /* Коричневый цвет для заголовка */
+  font-family: 'Garamond', serif; /* Элегантный шрифт */
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff; /* Белый фон для каждого элемента */
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #d2691e; /* Цвет для названий блюд */
+  font-family: 'Georgia', serif; /* Элегантный шрифт */
+}
+
+button {
+  background-color: #d2691e; /* Цвет кнопок */
+  color: #fff; /* Белый цвет текста на кнопках */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c65d1d; /* Темнее при наведении */
+}
+
+.phone-form {
+  margin: 20px 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333; /* Темный цвет для текста меток */
+}
+
+input[type="tel"],
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.order-button {
+  display: block;
+  width: 100%;
+  background-color: #d2691e; /* Цвет кнопки оформления заказа */
+  color: white; /* Белый текст на кнопке */
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.order-button:disabled {
+  background-color: #bbb; /* Цвет кнопки, когда она отключена */
+  cursor: not-allowed;
+}
+
+.order-confirmation {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e0ffe0; /* Светлый зеленый для подтверждения заказа */
+  border-radius: 5px;
+  text-align: center;
+}
+@media  (max-width: 768px) {
+.cart-container {
+      margin-top: 90px;
+      padding: 10px;
+      width: 80%;
+    }
+}
