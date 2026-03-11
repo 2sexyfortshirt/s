@@ -9,8 +9,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # --- React build ---
+# --- React build ---
+FROM node:20-alpine AS react-build
+
 WORKDIR /app/myreactapp
+
+COPY package*.json ./
 RUN npm install
+
+COPY . .
 RUN npm run build
 
 WORKDIR /app
