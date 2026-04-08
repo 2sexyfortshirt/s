@@ -27,4 +27,4 @@ RUN npm run build
 # --- Возвращаемся к Django ---
 WORKDIR /app
 EXPOSE 8000
-CMD ["gunicorn", "mychiko.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD python manage.py migrate --noinput && gunicorn mychiko.wsgi:application --bind 0.0.0.0:8000
