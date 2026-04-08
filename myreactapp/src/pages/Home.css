@@ -1,0 +1,58 @@
+/* Основной экран */
+.home {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0f0f, #1e1e1e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Затемнение + центр */
+.home-overlay {
+  text-align: center;
+  color: white;
+  animation: fadeIn 1s ease;
+}
+
+/* Заголовок */
+.home-title {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+/* Подзаголовок */
+.home-subtitle {
+  font-size: 18px;
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+/* Кнопка */
+.home-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #ff4d4f;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover */
+.home-button:hover {
+  background: #ff7875;
+  transform: scale(1.05);
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

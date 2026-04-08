@@ -1,80 +1,59 @@
-/* src/components/Navbar.css */
 .navbar {
-    background-color: #333;
-    padding: 10px;
-    display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-.nav-item {
-    margin: 0;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-  gap: 15px;
-}
-
-.nav-link:hover {
-    text-decoration: underline;
-}
-.AppBar {
-  background-color: #3f51b5; /* Основной цвет фона */
-}
-
-.Toolbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #111;
+  color: #fff;
+  position: relative;
 }
 
-.Button {
-  margin-left: 1rem;
+.navbar .nav-link {
+  color: #fff;
+  margin-right: 20px;
+  text-decoration: none;
   font-weight: bold;
 }
 
-@media only screen and (max-width: 767px) {
-  .navbar {
-    flex-direction: column; /* Переводим navbar в вертикальный режим */
-    align-items: flex-start; /* Выравниваем элементы по левому краю */
-  }
-
-  .navbar-links {
-    flex-direction: column; /* Ссылки также выравниваются вертикально */
-    width: 100%;
-  }
-
-  .navbar-links a {
-    padding: 10px;
-    text-align: left;
-    width: 100%; /* Растягиваем ссылки на всю ширину экрана */
-  }
-}
-@media (max-width: 768px) {
-  .navbar-links {
-    display: none; /* Скрывать кнопки на мобильных устройствах */
-  }
-}
-.logo {
-    width: 150px;
-    height: auto;
-       display: block;
+.navbar .cart-icon {
+  position: relative;
+  cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .logo {
-        width: 100px;
-    }
+.mini-cart {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: #222;
+  border: 1px solid #555;
+  padding: 10px;
+  min-width: 150px;
+  z-index: 100;
 }
 
+.mini-cart-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #444;
+}
+
+.mini-cart-item:last-child {
+  border-bottom: none;
+}
+
+.auth-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-button {
+  background: #ff9800;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.username {
+  font-size: 14px;
+}

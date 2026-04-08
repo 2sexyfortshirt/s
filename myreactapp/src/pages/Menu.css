@@ -1,0 +1,87 @@
+/* Контейнер */
+.menu-container {
+  padding: 20px;
+  color: white;
+}
+
+/* Заголовок */
+.menu-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Сетка категорий */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+/* Карточка категории */
+.category-card {
+  background: #1e1e1e;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #2a2a2a;
+}
+
+/* Hover эффект */
+.category-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  background: #2a2a2a;
+}
+
+/* Название категории */
+.category-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Кнопка назад */
+.back-button {
+  margin-bottom: 15px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #ff4d4f;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-button:hover {
+  background: #ff7875;
+}
+
+/* Заголовок выбранной категории */
+.selected-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Сетка блюд */
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+
+.search-input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #1e1e1e;
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: #888;
+}

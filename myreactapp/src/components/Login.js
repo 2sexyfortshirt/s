@@ -1,83 +1,54 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+
+function Login() {
+  const { login } = useAuth();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const handleLogin = async () => {
+    const res = await login(username, password);
 
-
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const csrfResponse = await axios.get('/api/csrf-token/');
-      const csrfToken = csrfResponse.data.csrf_token;
-
-      const response = await axios.post(
-        '/api/login/',
-        { username, password },
-        {
-          headers: {
-            'X-CSRFToken': csrfToken,
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        const { access, refresh } = response.data;
-
-        localStorage.setItem('accessToken', access);
-        localStorage.setItem('refreshToken', refresh);
-
-        onLogin();  // Уведомляем родительский компонент о успешном входе
-        navigate('/orders');
-      } else {
-        setError('Invalid credentials.');
-      }
-    } catch (err) {
-      console.error(err);
-      setError('Invalid credentials or server error.');
-    } finally {
-      setIsLoading(false);
+    if (res.success) {
+      window.location.href = "/";
+    } else {
+      alert(res.message);
     }
   };
-
 
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          disabled={isLoading}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          disabled={isLoading}
-        />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      <input
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button onClick={handleLogin}>Login</button>
+      <p>
+  No account? <span onClick={() => navigate("/register")}>Register</span>
+</p>
+<p
+  style={{ cursor: "pointer", color: "blue" }}
+  onClick={() => navigate("/forgot")}
+>
+  Forgot password?
+</p>
     </div>
   );
-};
+}
 
 export default Login;

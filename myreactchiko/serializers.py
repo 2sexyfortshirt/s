@@ -18,7 +18,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'password', 'email','is_staff']
 
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
@@ -150,7 +150,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ['id', 'cart', 'status','total_price','items','delivery_latitude',
-                  'delivery_longitude','created_at','delivery_address']
+                  'delivery_longitude','created_at','delivery_address','phone_number']
 
 
 

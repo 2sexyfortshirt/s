@@ -8,6 +8,9 @@ from rest_framework.permissions import IsAuthenticated
 from django.db import transaction
 from django.db.models import Avg
 from rest_framework import permissions
+from django.contrib.auth.tokens import default_token_generator
+
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from rest_framework.exceptions import ValidationError
 from rest_framework import generics
@@ -15,23 +18,26 @@ from .models import Menu, Dish,Cart,CartItem
 from .serializers import MenuSerializer, DishSerializer
 from .services import add_to_cart_service
 from django.shortcuts import get_object_or_404
+from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+from django.utils.encoding import force_bytes
 from .utils import send_order_update_to_websocket
 from django.contrib.auth.decorators import login_required
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.http import JsonResponse
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
 from rest_framework import status
 from .models import Dish, Cart, CartItem,Order,Ingredients,Review
 from .serializers import CartSerializer,CartItemSerializer,OrderSerializer,IngredientsSerializer,CustomBurgerSerializer,LoginSerializer,UserSerializer,OrderStatusUpdateSerializer,LogoutSerializer,ReviewSerializer
 import random
 import time
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
+
+
 from rest_framework.views import APIView
 from django.views.decorators.csrf import csrf_exempt
 from django.middleware.csrf import get_token
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 import json
+from rest_framework.permissions import IsAdminUser
 
 
 
@@ -149,16 +155,14 @@ def create_order(request):
         cart = Cart.objects.get(session_key=user_session, is_ordered=False)
         total_price = 0
         for item in cart.items.all():
-
             if item.dish:
-                # For standard dishes, use dish price
                 total_price += item.dish.price * item.quantity
-                print(f'Item: {item.dish.name}, Ingredients: {item.ingredients.all()}')
             else:
-                # For custom dishes, use custom_dish_price (already set in add_custom_burger_to_cart)
-                if item.custom_dish_price is None:
-                    print(f"Error: custom_dish_price is not set for {item.custom_dish_type}")
                 total_price += item.custom_dish_price * item.quantity
+
+            for ingredient in item.ingredients.all():
+                if ingredient.extra_cost:
+                    total_price += ingredient.extra_cost * item.quantity
 
         for ingredient in item.ingredients.all():
             if ingredient.extra_cost is not None:
@@ -172,6 +176,8 @@ def create_order(request):
         longitude = coordinates["delivery_longitude"]
 
         order = Order.objects.create(
+            user=request.user,
+
 
             cart=cart, total_price=total_price,
             status="Pending",
@@ -357,30 +363,27 @@ def generate_emulated_coordinates():
 def get_emulated_coordinates(request):
     coordinates = generate_emulated_coordinates()
     return JsonResponse(coordinates)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_order_by_id(request):
+    if request.user.is_staff:
+        orders = Order.objects.all()
+    else:
+        orders = Order.objects.filter(user=request.user)
+
+    serializer = OrderSerializer(orders, many=True)
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
-def get_order_by_id(request, order_id):
-    try:
-        order = Order.objects.get(id=order_id)
+@permission_classes([IsAuthenticated])
+def get_all_orders(request):
+    if not request.user.is_staff:
+        return Response({"error": "Forbidden"}, status=403)
 
-        if not order.delivery_latitude or not order.delivery_longitude:
-            return Response({'error': 'Coordinates not available for this order'}, status=404)
-
-        serializer = OrderSerializer(order)
-
-
-
-
-        return Response(serializer.data)
-
-    except Order.DoesNotExist:
-        return Response({'error': 'Order not found'}, status=404)
-
-
-#@login_required
-#def check_authorization(request):
-   # return JsonResponse({'is_staff': request.user.is_staff})
-
+    orders = Order.objects.all()
+    serializer = OrderSerializer(orders, many=True)
+    return Response(serializer.data)
 
 
 
@@ -398,7 +401,12 @@ class LoginView(APIView):
 
                 return Response({
                     'access': str(access_token),
-                    'refresh': str(refresh)
+                    'refresh': str(refresh),
+                    'user': {
+                        'id': user.id,
+                        'username': user.username,
+                        'is_staff': user.is_staff,  # 🔥 ВАЖНО
+                        'is_superuser': user.is_superuser}
                 })
             return Response({"error": "Invalid credentials"}, status=400)
         return Response(serializer.errors, status=400)
@@ -418,6 +426,22 @@ class LogoutView(APIView):
             return Response({"message": "Logout successful."}, status=status.HTTP_204_NO_CONTENT)
         print("Serializer errors:", serializer.errors)  # Логируем ошибки сериализатора
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['POST'])
+def register(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+    email = request.data.get("email")
+
+
+    if not username or not password:
+        return Response({"error":"Username and password required"},status=400)
+    if User.objects.filter(username=username,email=email).exists():
+        return Response({"error": "User already exists"},status=400)
+    user = User.objects.create_user(username=username,password=password,email=email)
+    return Response({"success": True})
 class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -442,28 +466,76 @@ def get_status_choices(request):
     """
     choices = [{'value': choice[0], 'label': choice[1]} for choice in Order.STATUS_CHOICES]
     return Response({'choices': choices}, status=status.HTTP_200_OK)
-@csrf_exempt
+@api_view(['POST'])
+@permission_classes([IsAdminUser])  # 🔥 ТОЛЬКО АДМИН
 def update_order_status(request, order_id):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            status = data.get('status')
-            if status not in ['pending', 'completed', 'cancelled']:
-                return JsonResponse({'error': 'Invalid status'}, status=400)
+    try:
+        status_value = request.data.get('status')
 
-            order = Order.objects.get(id=order_id)
-            order.status = status
-            order.save()
-            return JsonResponse({'success': 'Order status updated'})
-        except Order.DoesNotExist:
-            return JsonResponse({'error': 'Order not found'}, status=404)
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-    else:
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
+        if status_value not in ['pending', 'completed', 'cancelled']:
+            return Response({'error': 'Invalid status'}, status=400)
 
+        order = Order.objects.get(id=order_id)
+        print("ORDER BEFORE:", order.status)
+        order.status = status_value
+        order.save()
+
+        return Response({'success': 'Order status updated'})
+
+    except Order.DoesNotExist:
+        return Response({'error': 'Order not found'}, status=404)
 
 
 def get_average_rating(request, dish_id):
     average_rating = Review.objects.filter(dish_id=dish_id).aggregate(avg_rating=Avg('rating'))['avg_rating']
     return JsonResponse({'average_rating': round(average_rating, 2) if average_rating else 0})
+
+
+
+# it is request for reset password
+@api_view(['POST'])
+def request_password_reset(request):
+    email = request.data.get("email")
+    try:
+        user = User.objects.get(email=email)
+    except User.DoesNotExist:
+        return Response({"error": "User not found "}, status=404)
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    token = default_token_generator.make_token(user)
+    reset_link = f"{request.scheme}://{request.get_host()}/reset/{uid}/{token}/"
+    send_mail(
+        "Password Reset",
+        f"Click here: {reset_link}",
+        "whosdefirst@gmail.com",  # можно любое имя, письма не уходят
+        [email],
+    )
+    return Response({"success":True})
+
+
+# it is admittion of reset
+
+
+@api_view(['POST'])
+
+def confirm_password_reset(request):
+    uid = request.data.get("uid")
+    token = request.data.get("token")
+    new_password = request.data.get("new_password")
+
+    try:
+        user_id = urlsafe_base64_decode(uid).decode()
+        user = User.objects.get(pk=user_id)
+        print("UID:", uid)
+        print("TOKEN:", token)
+
+    except:
+
+        return Response({"error": "Invalid token"},status=400)
+
+
+    if not default_token_generator.check_token(user, token):
+        return Response({"error":"invalid token"},status=400)
+    user.set_password(new_password)
+    user.save()
+    return Response({"success": True})
+

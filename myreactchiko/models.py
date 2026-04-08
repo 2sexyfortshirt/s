@@ -72,10 +72,12 @@ class Order(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Pending'),
         ('completed', 'Completed'),
-        ('canceled', 'Canceled'),
+        ('cancelled', 'Cancelled'),
     ]
 
 
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='orders',null=True,blank=True)
     cart = models.OneToOneField(Cart, on_delete=models.CASCADE)  # Связь с корзиной
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
@@ -91,6 +93,7 @@ class Order(models.Model):
 
 
 class Review(models.Model):
+
     dish = models.ForeignKey(Dish,on_delete =models.CASCADE, related_name='reviews')
     name = models.CharField(max_length=100)
     rating = models.IntegerField(choices=[(i,i) for i in range(1,6)])

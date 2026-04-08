@@ -33,7 +33,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7gm%^zwwej5$il@re0#%+fgn(*w1jza-#tthzir@8zn!775lf='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0', 'your-domain.com', '.railway.app',]
 
@@ -116,18 +116,16 @@ ROOT_URLCONF = 'mychiko.urls'
 WSGI_APPLICATION = 'mychiko.wsgi.application'
 ASGI_APPLICATION = 'mychiko.asgi.application'
 
-REDIS_URL = os.environ.get("REDIS_URL")  # Railway предоставляет Redis
-if REDIS_URL:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                "hosts": [REDIS_URL],
-            },
+ # Railway предоставляет Redis
+#if REDIS_URL:
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
         },
-    }
-else:
-    CHANNEL_LAYERS = {}
+    },
+}
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASE_URL = os.environ.get("DATABASE_URL")  # берет переменную из Railway
@@ -193,28 +191,44 @@ STATIC_URL = '/static/'
 
 """DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'"""
 STATICFILES_DIRS = [
-    BASE_DIR / 'myreactapp' / 'build' / 'static',
+    BASE_DIR / "myreactapp"/"build"/"static",
+    BASE_DIR / "myreactapp" / "build",
+
 ]
+
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CORS_ALLOWED_ORIGINS = [
-   # 'http://localhost:3000',
+
 
     'http://127.0.0.1:8000',
 
 
 ]
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000',
+
+]
 
 
 CORS_ALLOW_CREDENTIALS = True
-SESSION_COOKIE_SAMESITE = None
 
 
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = False
 CORS_ALLOW_ALL_ORIGINS = True
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'whosdefirst@gmail.com'
+EMAIL_HOST_PASSWORD = 'vqyvliknujviluuf'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
