@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.ff1c5fd3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.ff1c5fd3.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.ff1c5fd3.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/myreactapp/src/.env" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
