@@ -15,6 +15,7 @@ import os
 from datetime import timedelta
 import urllib.parse
 import dj_database_url
+from dotenv import load_dotenv
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -35,7 +36,8 @@ SECRET_KEY = 'django-insecure-7gm%^zwwej5$il@re0#%+fgn(*w1jza-#tthzir@8zn!775lf=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0', 'your-domain.com', '.railway.app',]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0', 'your-domain.com', '.railway.app',
+                 's-production-7378.up.railway.app']
 
 
 
@@ -128,6 +130,7 @@ CHANNEL_LAYERS = {
 }
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+load_dotenv()
 DATABASE_URL = os.environ.get("DATABASE_URL")  # берет переменную из Railway
 
 if DATABASE_URL:
@@ -135,7 +138,7 @@ if DATABASE_URL:
         "default": dj_database_url.parse(
             DATABASE_URL,
             conn_max_age=600,
-            ssl_require=False  # для внутреннего DATABASE_URL SSL обычно не нужен
+            ssl_require=True # для внутреннего DATABASE_URL SSL обычно не нужен
         )
     }
 else:
@@ -208,6 +211,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
+'https://s-production-7378.up.railway.app',
 
 ]
 
@@ -216,10 +220,9 @@ CORS_ALLOW_CREDENTIALS = True
 
 
 SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-
+CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = 'Lax'
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 CORS_ALLOW_ALL_ORIGINS = True
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
