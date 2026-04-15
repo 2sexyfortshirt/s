@@ -39,7 +39,8 @@ function OrderDetails() {
 
   // 🔥 WebSocket
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8001/ws/orders/");
+    const socket = new WebSocket("wss://s-production-7378.up.railway.app/ws/orders/");
+    //const socket = new WebSocket("ws://localhost:8001/ws/orders/");
 
     socket.onopen = () => console.log("✅ WS connected");
 
