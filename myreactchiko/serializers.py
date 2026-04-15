@@ -8,9 +8,10 @@ from .models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Review
-        fields = ['id', 'dish', 'name', 'rating', 'comment', 'created_at']
+        fields = ['id', 'user', 'rating', 'comment']
 
 
 
@@ -97,6 +98,7 @@ class IngredientsSerializer(serializers.ModelSerializer):
 class DishSerializer(serializers.ModelSerializer):
     ingredients = IngredientsSerializer(many=True, read_only=True)
     dish_type = serializers.CharField(source='menu.dish_type', allow_null=True, required=False)
+    picture = serializers.ImageField(use_url=True)
     class Meta:
         model = Dish
         fields = ['id', 'name', 'description', 'price', 'menu','ingredients','picture','dish_type']  # Убедитесь, что поля корректные

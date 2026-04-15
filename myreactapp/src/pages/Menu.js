@@ -11,11 +11,17 @@ function Menu() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [search, setSearch] = useState("");
 
+
   useEffect(() => {
     api.get("menu/")
       .then(res => setProducts(res.data))
       .catch(err => console.error(err));
   }, []);
+
+
+
+
+
 
 
 

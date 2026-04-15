@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Menu, Dish, Cart,CartItem,Order,Ingredients
+from .models import Menu, Dish, Cart,CartItem,Order,Ingredients,Review
 
 
 # Register your models here.
@@ -60,3 +60,7 @@ class OrderAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return request.user.is_staff or request.user.is_superuser
 
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('user','dish','name','rating','comment','created_at')

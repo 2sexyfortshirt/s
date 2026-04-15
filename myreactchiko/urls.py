@@ -42,8 +42,8 @@ urlpatterns = [
     path('order/<int:order_id>/status/', update_order_status, name='update_order_status'),
     path('get_status_choices/', get_status_choices,name='get_status_choices'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('api/reviews/<int:dish_id>/', ReviewListCreateView.as_view(), name='reviews'),
-    path('api/average-rating/<int:dish_id>/', get_average_rating, name='average_rating'),
+    path('reviews/<int:dish_id>/', ReviewListCreateView.as_view()),
+    path('average-rating/<int:dish_id>/', get_average_rating, name='average_rating'),
     path('password-reset/', request_password_reset, name='request_password_reset'),
     path('password-reset-confirm/', confirm_password_reset,name='confirm_password_reset'),
 

@@ -91,15 +91,18 @@ class DishViewSet(viewsets.ModelViewSet):
 class ReviewListCreateView(generics.ListCreateAPIView):
     serializer_class = ReviewSerializer
 
+
     def get_queryset(self):
-        dish_id = self.kwargs.get('dish_id')  # Получаем dish_id из URL
-        if dish_id:
-            return Review.objects.filter(dish_id=dish_id)
-        return Review.objects.none()
+        return Review.objects.filter(dish_id=self.kwargs['dish_id'])
 
     def perform_create(self, serializer):
-        dish_id = self.kwargs.get('dish_id')  # Передаем dish_id для нового отзыва
-        serializer.save(dish_id=dish_id)
+        dish = get_object_or_404(Dish, id=self.kwargs['dish_id'])
+
+        # 🔥 запрет 2 отзывов от одного пользователя
+        if Review.objects.filter(user=self.request.user, dish=dish).exists():
+            raise serializers.ValidationError("Вы уже оставили отзыв")
+
+        serializer.save(user=self.request.user, dish=dish)
 
 
 
@@ -437,7 +440,7 @@ def register(request):
 
 
     if not username or not password:
-        return Response({"error":"Username and password required"},status=400)
+        return Response({"error": "Username and password required"},status=400)
     if User.objects.filter(username=username,email=email).exists():
         return Response({"error": "User already exists"},status=400)
     user = User.objects.create_user(username=username,password=password,email=email)

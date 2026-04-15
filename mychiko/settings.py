@@ -243,3 +243,4 @@ AUTHENTICATION_BACKENDS = [
 
 print("STATICFILES_DIRS =", STATICFILES_DIRS)
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+

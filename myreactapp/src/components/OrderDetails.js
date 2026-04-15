@@ -8,19 +8,79 @@ function OrderDetails() {
   const [statusChoices, setStatusChoices] = useState([]);
   const { user } = useAuth();
 
-  // 🔥 загрузка заказов
+
+  const normalizeOrder = (order) => {
+    if (!order) return null;
+
+    return {
+      ...order,
+      items: order.items || order.cart?.items || [],
+    };
+  };
+
+
+  // 🔥 ВЫНЕСЛИ СЮДА
+  const fetchOrders = async () => {
+    try {
+      const res = await api.get("orders/");
+      const normalized = res.data.map(normalizeOrder);
+      setOrders(normalized);
+    } catch (err) {
+      console.error("❌ Orders error:", err.response?.data || err);
+      setError(err.response?.data?.error || "Error loading orders");
+    }
+  };
+
+
+  // 🔥 initial load
   useEffect(() => {
-    const fetchOrders = async () => {
+    fetchOrders();
+  }, []);
+
+  // 🔥 WebSocket
+  useEffect(() => {
+    const socket = new WebSocket("ws://localhost:8001/ws/orders/");
+
+    socket.onopen = () => console.log("✅ WS connected");
+
+    socket.onmessage = (event) => {
+      console.log("🔥 RAW WS:", event.data);
+
+      let data;
       try {
-        const res = await api.get("orders/");
-        setOrders(res.data);
-      } catch (err) {
-        console.error("❌ Orders error:", err.response?.data || err);
-        setError(err.response?.data?.error || "Error loading orders");
+        data = JSON.parse(event.data);
+      } catch (e) {
+        console.error("❌ WS parse error:", e);
+        return;
       }
+
+      const order = normalizeOrder(data.order || data);
+
+      if (!order || !order.id) return;
+
+      console.log("🔥 NORMALIZED ORDER:", order);
+
+      setOrders((prev) => {
+        const exists = prev.find(
+          (o) => String(o.id) === String(order.id)
+        );
+
+        if (exists) {
+          return prev.map((o) =>
+            String(o.id) === String(order.id)
+              ? { ...o, ...order }
+              : o
+          );
+        }
+
+        return [order, ...prev];
+      });
     };
 
-    fetchOrders();
+    socket.onerror = (err) => console.error("❌ WS error", err);
+    socket.onclose = () => console.log("🔌 WS closed");
+
+    return () => socket.close();
   }, []);
 
   // 🔥 загрузка статусов
