@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import urllib.parse
 from pathlib import Path
 import os
 from datetime import timedelta
@@ -113,21 +113,37 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mychiko.urls'
-
+redis_url = os.environ.get("REDIS_URL")
 
 WSGI_APPLICATION = 'mychiko.wsgi.application'
 ASGI_APPLICATION = 'mychiko.asgi.application'
 
  # Railway предоставляет Redis
-#if REDIS_URL:
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+
+if redis_url:
+
+    url = urllib.parse.urlparse(redis_url)
+
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [(url.hostname, url.port)],
+                # если есть пароль:
+                "password": url.password,
+            },
         },
-    },
-}
+    }
+else:
+    # fallback для локальной разработки
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [("127.0.0.1", 6379)],
+            },
+        },
+    }
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv()
