@@ -179,7 +179,7 @@ def create_order(request):
         longitude = coordinates["delivery_longitude"]
 
         order = Order.objects.create(
-            user=request.user,
+            user=request.user if request.user.is_authenticated else None,
 
 
             cart=cart, total_price=total_price,
