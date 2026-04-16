@@ -148,6 +148,10 @@ def add_to_cart(request):
 @api_view(['POST'])
 @transaction.atomic
 def create_order(request):
+    print("SESSION:", request.session.session_key)
+    print("COOKIES:", request.COOKIES)
+    if not request.session.session_key:
+        request.session.create()
     user_session = request.session.session_key
     phone_number = request.data.get('phone_number')
     delivery_address = request.data.get('delivery_address')
