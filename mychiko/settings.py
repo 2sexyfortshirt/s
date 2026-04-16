@@ -154,7 +154,7 @@ if DATABASE_URL:
         "default": dj_database_url.parse(
             DATABASE_URL,
             conn_max_age=600,
-            ssl_require=True # для внутреннего DATABASE_URL SSL обычно не нужен
+            ssl_require=True,# для внутреннего DATABASE_URL SSL обычно не нужен
         )
     }
 else:
