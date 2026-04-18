@@ -113,7 +113,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mychiko.urls'
-redis_url = os.environ.get("REDIS_URL")
+
 
 WSGI_APPLICATION = 'mychiko.wsgi.application'
 ASGI_APPLICATION = 'mychiko.asgi.application'
@@ -121,11 +121,7 @@ ASGI_APPLICATION = 'mychiko.asgi.application'
  # Railway предоставляет Redis
 redis_url = os.environ.get("REDIS_URL")
 print("REDIS_URL =", os.environ.get("REDIS_URL"))
-
-if redis_url:
-    url = urllib.parse.urlparse(redis_url)
-
-    CHANNEL_LAYERS = {
+CHANNEL_LAYERS = {
         "default": {
             "BACKEND": "channels_redis.core.RedisChannelLayer",
             "CONFIG": {
@@ -133,15 +129,7 @@ if redis_url:
             },
         },
     }
-else:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                "hosts": [("127.0.0.1", 6379)],
-            },
-        },
-    }
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 load_dotenv()
