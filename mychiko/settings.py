@@ -119,9 +119,10 @@ WSGI_APPLICATION = 'mychiko.wsgi.application'
 ASGI_APPLICATION = 'mychiko.asgi.application'
 
  # Railway предоставляет Redis
+redis_url = os.environ.get("REDIS_URL")
+print("REDIS_URL =", os.environ.get("REDIS_URL"))
 
 if redis_url:
-
     url = urllib.parse.urlparse(redis_url)
 
     CHANNEL_LAYERS = {
@@ -129,13 +130,10 @@ if redis_url:
             "BACKEND": "channels_redis.core.RedisChannelLayer",
             "CONFIG": {
                 "hosts": [redis_url],
-
-
             },
         },
     }
 else:
-    # fallback для локальной разработки
     CHANNEL_LAYERS = {
         "default": {
             "BACKEND": "channels_redis.core.RedisChannelLayer",
