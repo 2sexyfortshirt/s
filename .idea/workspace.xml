@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/mychiko/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mychiko/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactchiko/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
