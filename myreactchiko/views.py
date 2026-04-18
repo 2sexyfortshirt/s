@@ -189,7 +189,7 @@ def create_order(request):
         """request.session.cycle_key()"""
 
         serialized_data = serializer.data
-        #send_order_update_to_websocket(serialized_data)
+        send_order_update_to_websocket(serialized_data)
 
 
 

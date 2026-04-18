@@ -122,15 +122,11 @@ ASGI_APPLICATION = 'mychiko.asgi.application'
 
 if redis_url:
 
-    url = urllib.parse.urlparse(redis_url)
-
     CHANNEL_LAYERS = {
         "default": {
             "BACKEND": "channels_redis.core.RedisChannelLayer",
             "CONFIG": {
-                "hosts": [(url.hostname, url.port)],
-                # если есть пароль:
-                "password": url.password,
+                "hosts": [redis_url],
             },
         },
     }
