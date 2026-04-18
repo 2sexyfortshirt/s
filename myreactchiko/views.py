@@ -200,7 +200,7 @@ def create_order(request):
 
 
 
-        return JsonResponse({'success': True, 'order': serialized_data,'message': 'Ваш заказ успешно оформлен!'})
+        return JsonResponse({'success': True, 'order': serializer.data,'message': 'Ваш заказ успешно оформлен!'})
 
 
 
