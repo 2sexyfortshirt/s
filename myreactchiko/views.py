@@ -167,20 +167,11 @@ def create_order(request):
             else:
                 total_price += item.custom_dish_price * item.quantity
 
-            for ingredient in item.ingredients.all():
-                if ingredient.extra_cost:
-                    total_price += ingredient.extra_cost * item.quantity
 
-        for ingredient in item.ingredients.all():
-            if ingredient.extra_cost is not None:
-                print(f"Ingredient: {ingredient.name}, Extra Cost: {ingredient.extra_cost}, Quantity: {item.quantity}")
-                total_price += ingredient.extra_cost * item.quantity
 
-            else:
-                print(f"Ингредиент {ingredient.name} не имеет стоимости")
-        coordinates = generate_emulated_coordinates()
-        latitude = coordinates["delivery_latitude"]
-        longitude = coordinates["delivery_longitude"]
+        #coordinates = generate_emulated_coordinates()
+        #latitude = coordinates["delivery_latitude"]
+        #longitude = coordinates["delivery_longitude"]
 
         order = Order.objects.create(
             user=request.user if request.user.is_authenticated else None,
@@ -190,8 +181,7 @@ def create_order(request):
             status="Pending",
             phone_number=phone_number,
             delivery_address=delivery_address,
-            delivery_latitude=latitude,
-            delivery_longitude=longitude
+
         )
         serializer = OrderSerializer(order)
         cart.is_ordered = True
@@ -199,7 +189,7 @@ def create_order(request):
         """request.session.cycle_key()"""
 
         serialized_data = serializer.data
-        send_order_update_to_websocket(serialized_data)
+        #send_order_update_to_websocket(serialized_data)
 
 
 
@@ -210,7 +200,7 @@ def create_order(request):
 
 
 
-        return JsonResponse({'success': True, 'order': serializer.data,'message': 'Ваш заказ успешно оформлен!'})
+        return JsonResponse({'success': True, 'order': serialized_data,'message': 'Ваш заказ успешно оформлен!'})
 
 
 

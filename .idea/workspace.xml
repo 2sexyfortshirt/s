@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/mychiko/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mychiko/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactchiko/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -426,147 +427,127 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>150</line>
+          <line>154</line>
           <option name="timeStamp" value="1415" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>151</line>
+          <line>155</line>
           <option name="timeStamp" value="1416" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>153</line>
+          <line>157</line>
           <option name="timeStamp" value="1417" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>157</line>
+          <line>161</line>
           <option name="timeStamp" value="1418" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>158</line>
+          <line>162</line>
           <option name="timeStamp" value="1419" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>169</line>
-          <option name="timeStamp" value="1420" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>170</line>
-          <option name="timeStamp" value="1421" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
           <line>171</line>
-          <option name="timeStamp" value="1422" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>172</line>
-          <option name="timeStamp" value="1423" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>176</line>
           <option name="timeStamp" value="1424" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>177</line>
+          <line>172</line>
           <option name="timeStamp" value="1425" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>178</line>
+          <line>173</line>
           <option name="timeStamp" value="1426" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>184</line>
+          <line>179</line>
           <option name="timeStamp" value="1427" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>180</line>
+          <line>175</line>
           <option name="timeStamp" value="1428" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>185</line>
+          <line>180</line>
           <option name="timeStamp" value="1429" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>186</line>
+          <line>181</line>
           <option name="timeStamp" value="1430" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>187</line>
+          <line>182</line>
           <option name="timeStamp" value="1431" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>191</line>
+          <line>185</line>
           <option name="timeStamp" value="1434" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>192</line>
+          <line>186</line>
           <option name="timeStamp" value="1435" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>193</line>
+          <line>187</line>
           <option name="timeStamp" value="1436" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>196</line>
+          <line>190</line>
           <option name="timeStamp" value="1437" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>197</line>
+          <line>191</line>
           <option name="timeStamp" value="1438" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>208</line>
+          <line>202</line>
           <option name="timeStamp" value="1439" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>212</line>
+          <line>206</line>
           <option name="timeStamp" value="1441" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>215</line>
+          <line>209</line>
           <option name="timeStamp" value="1442" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>213</line>
+          <line>207</line>
           <option name="timeStamp" value="1443" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>214</line>
+          <line>208</line>
           <option name="timeStamp" value="1444" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>311</line>
+          <line>305</line>
           <option name="timeStamp" value="1445" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>365</line>
+          <line>359</line>
           <option name="timeStamp" value="1446" />
         </line-breakpoint>
       </breakpoints>
