@@ -30,7 +30,7 @@ RUN npm run build
 WORKDIR /app
 
 # nginx config
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 ENV PORT=80
 EXPOSE 80
