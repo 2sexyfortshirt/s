@@ -3,7 +3,6 @@ FROM python:3.13-slim
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# system deps + nginx + node
 RUN apt-get update && apt-get install -y \
     nginx \
     curl \
@@ -15,31 +14,26 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# python deps
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# project
 COPY . .
 
-# react build
 WORKDIR /app/myreactapp
 RUN npm install
 RUN npm run build
 
 WORKDIR /app
 
-# nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-ENV PORT=80
 EXPOSE 80
 
-# запуск ВСЕГО
 CMD sh -c "\
 python manage.py migrate --noinput && \
 python manage.py collectstatic --noinput && \
 gunicorn mychiko.wsgi:application --bind 0.0.0.0:8000 & \
 daphne -b 0.0.0.0 -p 8001 mychiko.asgi:application & \
 nginx -g 'daemon off;' \
+wait -n \
 "
