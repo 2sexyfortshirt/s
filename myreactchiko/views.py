@@ -144,12 +144,18 @@ def add_to_cart(request):
 
 
 
-
+import traceback
 @api_view(['POST'])
 @transaction.atomic
+
 def create_order(request):
     print("SESSION:", request.session.session_key)
     print("COOKIES:", request.COOKIES)
+    print("AUTH:", request.user.is_authenticated)
+    print("CART QUERY:", Cart.objects.filter(
+        session_key=request.session.session_key,
+        is_ordered=False
+    ).count())
     if not request.session.session_key:
         request.session.create()
     user_session = request.session.session_key
@@ -207,7 +213,13 @@ def create_order(request):
     except Cart.DoesNotExist:
         return JsonResponse({'success': False, 'error': 'Cart not found'}, status=400)
     except Exception as e:
-        return JsonResponse({'success': False, 'error': str(e)}, status=500)
+        print("🔥 FULL TRACEBACK:")
+        print(traceback.format_exc())
+
+        return JsonResponse(
+            {'success': False, 'error': str(e)},
+            status=500
+        )
 
 
 
