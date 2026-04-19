@@ -511,7 +511,7 @@ def request_password_reset(request):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
 
-        reset_link = f"{request.scheme}://{request.get_host()}/reset/{uid}/{token}/"
+        reset_link = f"https://{request.get_host()}/reset/{uid}/{token}/"
 
         print("RESET LINK:", reset_link)
 
@@ -521,6 +521,14 @@ def request_password_reset(request):
             "whosdefirst@gmail.com",
             [email],
         )
+        result = send_mail(
+            "Password Reset",
+            f"Click here: {reset_link}",
+            None,
+            [email],
+        )
+
+        print("MAIL RESULT:", result)
 
         return Response({"success": True})
 
