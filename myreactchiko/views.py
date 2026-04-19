@@ -500,27 +500,38 @@ def get_average_rating(request, dish_id):
     return JsonResponse({'average_rating': round(average_rating, 2) if average_rating else 0})
 
 
-
-# it is request for reset password
 @api_view(['POST'])
 def request_password_reset(request):
-    email = request.data.get("email")
     try:
+        email = request.data.get("email")
+        print("EMAIL:", email)
+
         user = User.objects.get(email=email)
+
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = default_token_generator.make_token(user)
+
+        reset_link = f"{request.scheme}://{request.get_host()}/reset/{uid}/{token}/"
+
+        print("RESET LINK:", reset_link)
+
+        send_mail(
+            "Password Reset",
+            f"Click here: {reset_link}",
+            "whosdefirst@gmail.com",
+            [email],
+        )
+
+        return Response({"success": True})
+
     except User.DoesNotExist:
-        return Response({"error": "User not found "}, status=404)
-    uid = urlsafe_base64_encode(force_bytes(user.pk))
-    token = default_token_generator.make_token(user)
-    reset_link = f"{request.scheme}://{request.get_host()}/reset/{uid}/{token}/"
-    send_mail(
-        "Password Reset",
-        f"Click here: {reset_link}",
-        "whosdefirst@gmail.com",  # можно любое имя, письма не уходят
-        [email],
-    )
-    return Response({"success":True})
+        return Response({"error": "User not found"}, status=404)
 
+    except Exception as e:
+        print("🔥 PASSWORD RESET ERROR:")
+        print(traceback.format_exc())
 
+        return Response({"error": str(e)}, status=500)
 # it is admittion of reset
 
 
