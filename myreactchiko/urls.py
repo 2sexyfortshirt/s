@@ -5,10 +5,10 @@ from rest_framework.routers import DefaultRouter
 from .views import MenuViewSet, DishViewSet, UserOrderViewSet,AdminOrderViewSet,get_cart, add_to_cart,\
     create_order, update_cart_item_quantity,\
     delete_item, IngredientsList,\
-    add_custom_burger_to_cart, remove_ingredient_from_cart, get_emulated_coordinates,\
+    add_custom_burger_to_cart, remove_ingredient_from_cart, \
     LoginView, LogoutView, UserProfileView, CsrfTokenView, update_order_status,\
     get_status_choices, ReviewListCreateView, get_average_rating, register, request_password_reset,\
-    confirm_password_reset
+    confirm_password_reset\
 
 
 # Создайте роутер и зарегистрируйте ViewSets
@@ -32,7 +32,7 @@ urlpatterns = [
     path('api/cart/add_custom_burger/', add_custom_burger_to_cart, name='add_custom_burger_to_cart'),
     path('api/remove_ingredient/<int:item_id>/<int:ingredient_id>/', remove_ingredient_from_cart, name='remove_ingredient'),
 
-    path('api/get_emulated_coordinates/', get_emulated_coordinates, name='get_emulated_coordinates'),
+
   #  path('api/check-authorization/', check_authorization, name='check-authorization'),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', register, name='register'),

@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mychiko/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mychiko/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.95b86344.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.95b86344.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.95b86344.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/src/context/CartContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/context/CartContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/src/pages/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/pages/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/src/pages/Checkout.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactchiko/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactchiko/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactchiko/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
