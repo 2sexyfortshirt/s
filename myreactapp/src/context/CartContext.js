@@ -93,32 +93,33 @@ export const CartProvider = ({ children }) => {
     console.error(err);
   }
 };
-
-
 const createOrder = async (phone, address) => {
   try {
     const res = await api.post(
       "create_order/",
       {
-
         phone_number: phone,
         delivery_address: address,
       },
       {
         headers: {
-          "X-CSRFToken": getCSRFToken()
-        }
+          "X-CSRFToken": getCSRFToken(),
+        },
+        withCredentials: true,
       }
     );
 
-    fetchCart(); // корзина очистится
+    console.log("ORDER SUCCESS:", res.data);
+
+    await fetchCart().catch(e => console.log("cart error", e));
+
     return res.data;
 
   } catch (err) {
-    console.error(err);
+    console.error("ORDER ERROR:", err.response?.data || err.message);
+    throw err;
   }
 };
-
   return (
     <CartContext.Provider value={{ cart, fetchCart,  removeItem, updateQuantity, addToCart, createOrder, totalPrice  }}>
       {children}

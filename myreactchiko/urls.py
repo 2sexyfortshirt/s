@@ -2,21 +2,22 @@
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
-from .views import MenuViewSet, DishViewSet, get_cart, add_to_cart,\
+from .views import MenuViewSet, DishViewSet, UserOrderViewSet,AdminOrderViewSet,get_cart, add_to_cart,\
     create_order, update_cart_item_quantity,\
     delete_item, IngredientsList,\
-    add_custom_burger_to_cart, remove_ingredient_from_cart, get_order_by_id, get_emulated_coordinates,\
+    add_custom_burger_to_cart, remove_ingredient_from_cart, get_emulated_coordinates,\
     LoginView, LogoutView, UserProfileView, CsrfTokenView, update_order_status,\
     get_status_choices, ReviewListCreateView, get_average_rating, register, request_password_reset,\
-    confirm_password_reset,get_all_orders
+    confirm_password_reset
 
 
 # Создайте роутер и зарегистрируйте ViewSets
 router = DefaultRouter()
 router.register(r'menu', MenuViewSet)
 router.register(r'dishes', DishViewSet)
-"""router.register(r'cart', CartViewSet)"""
-"""router.register(r'cart_item', CartItemViewSet)"""
+router.register(r'orders', AdminOrderViewSet)
+router.register(r'my-orders', UserOrderViewSet, basename='my-orders')
+
 
 # Укажите URL-маршруты для API
 urlpatterns = [
@@ -30,8 +31,7 @@ urlpatterns = [
     path('api/ingredients/', IngredientsList.as_view(), name='ingredient-list'),
     path('api/cart/add_custom_burger/', add_custom_burger_to_cart, name='add_custom_burger_to_cart'),
     path('api/remove_ingredient/<int:item_id>/<int:ingredient_id>/', remove_ingredient_from_cart, name='remove_ingredient'),
-    path('my-orders/', get_order_by_id, name='get_order_by_id'),
-    path('orders/', get_all_orders, name='get_all_orders'),
+
     path('api/get_emulated_coordinates/', get_emulated_coordinates, name='get_emulated_coordinates'),
   #  path('api/check-authorization/', check_authorization, name='check-authorization'),
     path('login/', LoginView.as_view(), name='login'),

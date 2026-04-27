@@ -13,17 +13,15 @@ function Cart () {
   const [phone, setPhone] = useState("");
 const [address, setAddress] = useState("");
 
+const handleOrder = async () => {
+  const res = await createOrder(phone, address);
 
- const handleOrder = async () => {
-    const res = await createOrder(phone, address);
-
-    if (res?.success) {
-      alert("Заказ оформлен ✅");
-    } else {
-      alert("Ошибка ❌");
-    }
-  };
-
+  if (res?.id) {
+    alert("Заказ оформлен ✅");
+  } else {
+    alert("Ошибка ❌");
+  }
+};
 
 
   return(

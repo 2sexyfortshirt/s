@@ -34,7 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7gm%^zwwej5$il@re0#%+fgn(*w1jza-#tthzir@8zn!775lf='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0', 'your-domain.com', '.railway.app',
                  's-production-7378.up.railway.app']
@@ -204,13 +204,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-CORS_ALLOWED_ORIGINS = [
 
-
-    'http://127.0.0.1:8000',
-
-
-]
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
 'https://s-production-7378.up.railway.app',
@@ -218,29 +212,31 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-CORS_ALLOW_CREDENTIALS = True
 
 
+
+CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = 'Lax'
-SESSION_COOKIE_SECURE = True
-CORS_ALLOW_ALL_ORIGINS = True
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_SAMESITE = "Lax"
 
-EMAIL_HOST = 'smtp.gmail.com'
+
+
+CSRF_COOKIE_HTTPONLY = False
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = "apikey"
 
 
 
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_API_KEY")
+DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_FROM")
+print(os.environ.get("SENDGRID_API_KEY"))
 #EMAIL_HOST_USER = 'whosdefirst@gmail.com'
 #
 
-EMAIL_HOST_PASSWORD = 'vqyvliknujviluuf'
+#EMAIL_HOST_PASSWORD = 'vqyvliknujviluuf'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

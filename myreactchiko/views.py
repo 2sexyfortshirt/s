@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework import serializers
+from django.db.models import Prefetch
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -16,7 +17,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework import generics
 from .models import Menu, Dish,Cart,CartItem
 from .serializers import MenuSerializer, DishSerializer
-from .services import add_to_cart_service
+from .services import add_to_cart_service,OrderService
 from django.shortcuts import get_object_or_404
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.utils.encoding import force_bytes
@@ -78,17 +79,23 @@ class IngredientsList(generics.ListAPIView):
     serializer_class = IngredientsSerializer
 
 
-
-
-class MenuViewSet(viewsets.ModelViewSet):
-    queryset = Menu.objects.all()
+class MenuViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Menu.objects.prefetch_related(
+        Prefetch(
+            'dishes',
+            queryset=Dish.objects.only('id', 'name', 'price', 'menu_id')
+        )
+    )
     serializer_class = MenuSerializer
 
-class DishViewSet(viewsets.ModelViewSet):
-    queryset = Dish.objects.all()
-    serializer_class = DishSerializer
 
+class DishViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Dish.objects.select_related('menu').only(
+        'id', 'name', 'price', 'menu_id', 'picture'
+    )
+    serializer_class = DishSerializer
 class ReviewListCreateView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = ReviewSerializer
 
 
@@ -145,81 +152,36 @@ def add_to_cart(request):
 
 
 import traceback
-@api_view(['POST'])
-@transaction.atomic
 
+@csrf_exempt
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_order(request):
-    print("SESSION:", request.session.session_key)
-    print("COOKIES:", request.COOKIES)
-    print("AUTH:", request.user.is_authenticated)
-    print("CART QUERY:", Cart.objects.filter(
-        session_key=request.session.session_key,
-        is_ordered=False
-    ).count())
+
     if not request.session.session_key:
         request.session.create()
-    user_session = request.session.session_key
-    phone_number = request.data.get('phone_number')
-    delivery_address = request.data.get('delivery_address')
+    user = request.user if request.user.is_authenticated else None
+
+
+
     try:
 
-
-
-        cart = Cart.objects.get(session_key=user_session, is_ordered=False)
-        total_price = 0
-        for item in cart.items.all():
-            if item.dish:
-                total_price += item.dish.price * item.quantity
-            else:
-                total_price += item.custom_dish_price * item.quantity
-
-
-
-        #coordinates = generate_emulated_coordinates()
-        #latitude = coordinates["delivery_latitude"]
-        #longitude = coordinates["delivery_longitude"]
-
-        order = Order.objects.create(
-            user=request.user if request.user.is_authenticated else None,
-
-
-            cart=cart, total_price=total_price,
-            status="Pending",
-            phone_number=phone_number,
-            delivery_address=delivery_address,
-
+        order = OrderService.create_order(
+            session_key=request.session.session_key,
+            phone_number=request.data.get('phone_number'),
+            delivery_address=request.data.get('delivery_address'),
+            user=user,
         )
+
         serializer = OrderSerializer(order)
-        cart.is_ordered = True
-        cart.save()
-        """request.session.cycle_key()"""
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        serialized_data = serializer.data
-        send_order_update_to_websocket(serialized_data)
-
-
-
-
-
-
-
-
-
-
-        return JsonResponse({'success': True, 'order': serializer.data,'message': 'Ваш заказ успешно оформлен!'})
-
-
-
-    except Cart.DoesNotExist:
-        return JsonResponse({'success': False, 'error': 'Cart not found'}, status=400)
-    except Exception as e:
-        print("🔥 FULL TRACEBACK:")
-        print(traceback.format_exc())
-
-        return JsonResponse(
-            {'success': False, 'error': str(e)},
-            status=500
+    except ValueError as e:
+        return Response(
+            {"error": str(e)},
+            status=status.HTTP_400_BAD_REQUEST
         )
+
 
 
 
@@ -341,59 +303,21 @@ def remove_ingredient_from_cart(request, ingredient_id,item_id):
 
 
 
-LAT_MIN = 36.4
-LAT_MAX = 36.7
-LNG_MIN = 31.7
-LNG_MAX = 32.3
 
 
+class UserOrderViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
-current_coordinates = { "delivery_latitude": 36.543,  # Начальная широта (пример)
-    "delivery_longitude": 31.999, }
-
-def generate_emulated_coordinates():
-    global current_coordinates
-    latitude_change = random.uniform(-0.01, 0.01)
-    longitude_change = random.uniform(-0.01, 0.01)
-
-    new_latitude = current_coordinates["delivery_latitude"] + latitude_change
-    new_longtitude = current_coordinates["delivery_longitude"] + longitude_change
-
-    if LAT_MIN <= new_latitude <= LAT_MAX:
-        current_coordinates["delivery_latitude"] = new_latitude
-
-    if LNG_MIN <= new_longtitude <= LNG_MAX:
-        current_coordinates["delivery_longitude"] = new_longtitude
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
 
 
+class AdminOrderViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = OrderSerializer
+    permission_classes = [IsAdminUser]
 
-    return current_coordinates
-
-def get_emulated_coordinates(request):
-    coordinates = generate_emulated_coordinates()
-    return JsonResponse(coordinates)
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_order_by_id(request):
-    if request.user.is_staff:
-        orders = Order.objects.all()
-    else:
-        orders = Order.objects.filter(user=request.user)
-
-    serializer = OrderSerializer(orders, many=True)
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_all_orders(request):
-    if not request.user.is_staff:
-        return Response({"error": "Forbidden"}, status=403)
-
-    orders = Order.objects.all()
-    serializer = OrderSerializer(orders, many=True)
-    return Response(serializer.data)
-
+    queryset = Order.objects.all()
 
 
 class LoginView(APIView):

@@ -60,7 +60,6 @@ EXPOSE 80
 CMD sh -c "\
 python manage.py migrate --noinput && \
 python manage.py collectstatic --noinput && \
-
 daphne -b 0.0.0.0 -p 8001 mychiko.asgi:application & \
 nginx -g 'daemon off;' \
 "
