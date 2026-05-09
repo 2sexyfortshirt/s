@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="" />
+    <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/mychiko/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mychiko/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/css/main.a43444ef.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/css/main.a43444ef.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/src/components/ProductCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/components/ProductCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/src/pages/Menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/pages/Menu.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

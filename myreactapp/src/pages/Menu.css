@@ -1,87 +1,224 @@
-/* Контейнер */
+/* ============================= */
+/* 🌍 ГЛОБАЛЬНЫЙ БРЕНД */
+/* ============================= */
+
+:root {
+  --bg-main: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --bg-hover: #242424;
+
+  --accent: #ff7a00;
+  --accent-light: #ff9a3d;
+
+  --text-main: #ffffff;
+  --text-secondary: #b3b3b3;
+
+  --border: rgba(255,255,255,0.05);
+}
+
+
+/* ============================= */
+/* 🌌 ФОН САЙТА */
+/* ============================= */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: radial-gradient(circle at 20% 20%, #1a1a1a, #0f0f0f);
+  color: var(--text-main);
+}
+
+/* мягкое свечение (делает UI "дороже") */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 70% 30%,
+    rgba(255,122,0,0.1),
+    transparent
+  );
+
+  z-index: -1;
+}
+
+
+/* ============================= */
+/* 📦 КОНТЕЙНЕР */
+/* ============================= */
+
 .menu-container {
   padding: 20px;
-  color: white;
+   min-height: 100vh;
+}
+.page {
+  min-height: 100dvh;
 }
 
-/* Заголовок */
+/* ============================= */
+/* 🧾 ЗАГОЛОВКИ */
+/* ============================= */
+
 .menu-title {
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: 700;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
-/* Сетка категорий */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-}
-
-/* Карточка категории */
-.category-card {
-  background: #1e1e1e;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid #2a2a2a;
-}
-
-/* Hover эффект */
-.category-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  background: #2a2a2a;
-}
-
-/* Название категории */
-.category-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* Кнопка назад */
-.back-button {
-  margin-bottom: 15px;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  background: #ff4d4f;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.back-button:hover {
-  background: #ff7875;
-}
-
-/* Заголовок выбранной категории */
 .selected-title {
-  font-size: 24px;
+  font-size: 26px;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
-/* Сетка блюд */
-.dish-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-}
 
+/* ============================= */
+/* 🔍 ПОИСК */
+/* ============================= */
 
 .search-input {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+
+  padding: 12px 16px;
+  margin-bottom: 25px;
+
+  border-radius: 12px;
   border: 1px solid #333;
-  background: #1e1e1e;
+
+  background: #111;
   color: white;
+
+  font-size: 15px;
   outline: none;
-  font-size: 14px;
+
+  transition: 0.2s;
 }
 
 .search-input::placeholder {
   color: #888;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(255,122,0,0.3);
+}
+
+
+/* ============================= */
+/* 🧩 СЕТКА КАТЕГОРИЙ */
+/* ============================= */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+}
+
+
+/* ============================= */
+/* 🧱 КАРТОЧКИ КАТЕГОРИЙ */
+/* ============================= */
+
+.category-card {
+  position: relative;
+
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+  padding: 20px;
+
+  text-align: center;
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+  transition: all 0.3s ease;
+
+  animation: fadeIn 0.4s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px) scale(1.04);
+
+  background: var(--bg-hover);
+  border-color: var(--accent);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+
+/* ============================= */
+/* 📝 ТЕКСТ В КАРТОЧКАХ */
+/* ============================= */
+
+.category-title {
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.category-card:hover .category-title {
+  color: var(--accent);
+}
+
+
+/* ============================= */
+/* 🔙 КНОПКА НАЗАД */
+/* ============================= */
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 15px;
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--accent);
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.back-button:hover {
+  background: var(--accent-light);
+}
+
+
+/* ============================= */
+/* 🍔 СЕТКА БЛЮД */
+/* ============================= */
+
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+
+/* ============================= */
+/* 🎬 АНИМАЦИИ */
+/* ============================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,137 +1,202 @@
-/* CARD */
+/* ============================= */
+/* 🍔 PRODUCT CARD */
+/* ============================= */
+
 .product-card {
   width: 100%;
   max-width: 280px;
-  background: #ffffff;
+
+  background: var(--bg-card); /* вместо белого */
+  border: 1px solid var(--border);
+
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
   display: flex;
   flex-direction: column;
-  position: relative;
+
+  transition: all 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  transform: translateY(-6px) scale(1.02);
+  background: var(--bg-hover);
+  border-color: var(--accent);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
 
-/* IMAGE */
+
+/* ============================= */
+/* 🖼 IMAGE */
+/* ============================= */
+
 .product-card img {
   width: 100%;
   height: 170px;
   object-fit: cover;
 }
 
-/* TEXT */
+
+/* ============================= */
+/* 📝 TEXT */
+/* ============================= */
+
 .product-card h3 {
   font-size: 17px;
   margin: 12px 12px 6px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-main);
 }
 
 .product-card p {
   margin: 0 12px 8px;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 14px;
 }
 
-/* PRICE */
+
+/* ============================= */
+/* 💰 PRICE */
+/* ============================= */
+
 .product-card p:nth-of-type(1) {
   font-weight: bold;
-  color: #ff6b35;
+  color: var(--accent);
   font-size: 16px;
 }
 
-/* RATING */
+
+/* ============================= */
+/* ⭐ RATING */
+/* ============================= */
+
 .product-card p:nth-of-type(2) {
   font-size: 14px;
   color: #f1c40f;
 }
 
-/* BUTTON */
+.product-card img {
+  transition: 0.3s;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+/* ============================= */
+/* 🔘 ADD TO CART BUTTON */
+/* ============================= */
+
 .product-card button {
   margin: 10px 12px;
   padding: 10px;
+
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #ff6b35, #ff8c42);
+
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
   color: white;
+
   font-weight: 600;
   cursor: pointer;
+
   transition: 0.2s;
 }
 
 .product-card button:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
+  transform: scale(1.03);
+  opacity: 0.95;
 }
 
-/* REVIEWS */
+
+/* ============================= */
+/* 💬 REVIEWS */
+/* ============================= */
+
 .reviews {
   padding: 0 12px;
   max-height: 110px;
   overflow-y: auto;
+
   font-size: 13px;
-  color: #444;
+  color: var(--text-secondary);
 }
 
 .reviews div {
-  background: #f8f9fa;
+  background: #111; /* вместо светлого */
   padding: 6px 8px;
   border-radius: 8px;
   margin-bottom: 6px;
+
+  border: 1px solid var(--border);
 }
 
-/* FORM */
+
+/* ============================= */
+/* ✍️ REVIEW FORM */
+/* ============================= */
+
 .review-form {
   padding: 10px 12px 14px;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border-top: 1px solid #eee;
-}
-.review-form textarea {
 
- box-sizing: border-box;
+  border-top: 1px solid var(--border);
+}
+
+
+/* textarea */
+.review-form textarea {
+  box-sizing: border-box;
+
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid #ddd;
+
+  border: 1px solid #333;
+
   font-size: 14px;
   font-family: inherit;
+
   resize: none;
-  transition: all 0.2s ease;
   min-height: 70px;
-  background: #fafafa;
+
+  background: #111;
+  color: white;
+
+  transition: 0.2s;
 }
 
-/* focus эффект */
+.review-form textarea::placeholder {
+  color: #777;
+}
+
+/* focus */
 .review-form textarea:focus {
   outline: none;
-  border-color: #ff6b35;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+  border-color: var(--accent);
+
+  box-shadow: 0 0 0 3px rgba(255,122,0,0.2);
 }
 
-/* placeholder стиль */
-.review-form textarea::placeholder {
-  color: #aaa;
-  font-size: 13px;
-}
-/* SUBMIT BUTTON */
+
+/* submit button */
 .review-form button {
   background: linear-gradient(135deg, #2ecc71, #27ae60);
-  font-weight: 600;
 }
 
 .review-form button:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 
+/* ============================= */
 /* ⭐ STAR INPUT */
+/* ============================= */
+
 .star-input {
   display: flex;
   gap: 4px;
@@ -140,7 +205,7 @@
 }
 
 .star {
-  color: #ccc;
+  color: #555;
   transition: 0.2s;
 }
 
@@ -148,24 +213,15 @@
   transform: scale(1.2);
 }
 
-/* подсветка */
 .star.active {
   color: #f1c40f;
 }
 
-/* hover эффект (предпросмотр рейтинга) */
-.star-input:hover .star {
-  color: #ccc;
-}
 
-.star-input .star:hover,
-.star-input .star:hover ~ .star {
-  color: #ccc;
-}
+/* ============================= */
+/* 🧠 TEXTAREA COUNTER */
+/* ============================= */
 
-.star-input .star:hover {
-  color: #f1c40f;
-}
 .textarea-wrapper {
   position: relative;
 }
@@ -174,6 +230,7 @@
   position: absolute;
   right: 10px;
   bottom: 6px;
+
   font-size: 11px;
-  color: #999;
+  color: #777;
 }
