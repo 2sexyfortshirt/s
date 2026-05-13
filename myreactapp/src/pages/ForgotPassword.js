@@ -9,6 +9,7 @@ function ForgotPassword() {
       await api.post("password-reset/", { email });
       alert("Check your email");
     } catch (err) {
+     console.log(err.response?.data);
       alert("Error");
     }
   };

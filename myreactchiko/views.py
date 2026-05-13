@@ -435,16 +435,11 @@ def request_password_reset(request):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
 
-        reset_link = f"https://{request.get_host()}/reset/{uid}/{token}/"
+        reset_link = f"https://s-production-7378.up.railway.app/reset/{uid}/{token}/"
 
         print("RESET LINK:", reset_link)
 
-        send_mail(
-            "Password Reset",
-            f"Click here: {reset_link}",
-            "whosdefirst@gmail.com",
-            [email],
-        )
+
         result = send_mail(
             "Password Reset",
             f"Click here: {reset_link}",

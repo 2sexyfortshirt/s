@@ -24,32 +24,41 @@ const handleOrder = async () => {
 };
 
 
-  return(
-  <div style={{padding:20}}>
-  <h2>Cart</h2>
+ return (
+  <div style={{ padding: 20 }}>
+    <h2>Cart</h2>
 
-  {cart.length === 0 ?(
-  <p> Cart is empty </p>
-  ):(
-  cart.map(item => (
-  <div key={item.id}
-  style={{marginBottom:10}}>
-  <h3>{item.dish.name}</h3>
-  <p>Price:${item.dish.price}</p>
-   <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+    {cart.length === 0 ? (
+      <p>Cart is empty</p>
+    ) : (
+      <>
+        {cart.map(item => (
+          <div
+            key={item.id}
+            style={{ marginBottom: 10 }}
+          >
+            <h3>{item.dish.name}</h3>
+            <p>Price: ${item.dish.price}</p>
 
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
+                alignItems: "center",
+              }}
+            >
               {/* ➖ */}
-            <button
-        onClick={() => {
-          if (item.quantity === 1) {
-  removeItem(item.id);
-} else {
-  updateQuantity(item.id, item.quantity - 1);
-}
-        }}
-      >
-        -
-      </button>
+              <button
+                onClick={() => {
+                  if (item.quantity === 1) {
+                    removeItem(item.id);
+                  } else {
+                    updateQuantity(item.id, item.quantity - 1);
+                  }
+                }}
+              >
+                -
+              </button>
 
               <span>{item.quantity}</span>
 
@@ -61,45 +70,42 @@ const handleOrder = async () => {
               >
                 +
               </button>
-              {/* 🗑 УДАЛЕНИЕ */}
-    <button
-      className="remove-btn"
-      onClick={() => removeItem(item.id)}
-    >
-      ✕
-    </button>
 
+              {/* 🗑 */}
+              <button
+                className="remove-btn"
+                onClick={() => removeItem(item.id)}
+              >
+                ✕
+              </button>
             </div>
+          </div>
+        ))}
 
-  </div>
-   ))
+        {/* 👇 форма заказа */}
+        <div style={{ marginTop: "30px" }}>
+          <h3>Total: ${totalPrice}</h3>
+
+          <input
+            placeholder="Phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+
+          <input
+            placeholder="Address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+
+          <button onClick={handleOrder}>
+            Checkout
+          </button>
+        </div>
+      </>
     )}
-    {/* 👇 форма заказа */}
-      <div style={{ marginTop: "30px" }}>
-        <h3>Total: ${totalPrice}</h3>
-
-        <input
-          placeholder="Phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-
-        <input
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-
-        {/* 👇 КНОПКА */}
-        <button onClick={handleOrder}>
-          Checkout
-        </button>
-      </div>
-
   </div>
-  );
-
-
+);
 }
 
 export default Cart;
