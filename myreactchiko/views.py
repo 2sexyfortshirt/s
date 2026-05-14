@@ -424,44 +424,43 @@ def get_average_rating(request, dish_id):
     return JsonResponse({'average_rating': round(average_rating, 2) if average_rating else 0})
 
 from rest_framework.permissions import AllowAny
-@api_view(['POST'])
+@api_view(["POST"])
 @permission_classes([AllowAny])
-def request_password_reset(request):
-    try:
-        email = request.data.get("email")
-        print("EMAIL:", email)
+def password_reset(request):
+    email = request.data.get("email")
 
+    try:
         user = User.objects.get(email=email)
 
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
 
-        reset_link = f"https://s-production-7378.up.railway.app/reset/{uid}/{token}/"
-
-        print("RESET LINK:", reset_link)
-
-
-        result = send_mail(
-            "Password Reset",
-            f"Click here: {reset_link}",
-            None,
-            [email],
+        reset_link = (
+            f"https://s-production-7378.up.railway.app/"
+            f"reset/{uid}/{token}/"
         )
 
-        print("MAIL RESULT:", result)
+        send_mail(
+            "Password Reset",
+            f"Reset link: {reset_link}",
+            "whosdefirst@gmail.com",
+            [email],
+            fail_silently=False,
+        )
 
-        return Response({"success": True})
+        return Response({"message": "Email sent"})
 
     except User.DoesNotExist:
-        return Response({"error": "User not found"}, status=404)
+        return Response(
+            {"error": "User not found"},
+            status=404
+        )
 
     except Exception as e:
-        print("🔥 PASSWORD RESET ERROR:")
-        print(traceback.format_exc())
-
-        return Response({"error": str(e)}, status=500)
-# it is admittion of reset
-
+        return Response(
+            {"error": str(e)},
+            status=500
+        )
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
