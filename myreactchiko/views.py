@@ -423,8 +423,9 @@ def get_average_rating(request, dish_id):
     average_rating = Review.objects.filter(dish_id=dish_id).aggregate(avg_rating=Avg('rating'))['avg_rating']
     return JsonResponse({'average_rating': round(average_rating, 2) if average_rating else 0})
 
-
+from rest_framework.permissions import AllowAny
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def request_password_reset(request):
     try:
         email = request.data.get("email")
@@ -463,6 +464,7 @@ def request_password_reset(request):
 
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 
 def confirm_password_reset(request):
     uid = request.data.get("uid")
