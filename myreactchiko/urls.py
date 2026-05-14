@@ -7,7 +7,7 @@ from .views import MenuViewSet, DishViewSet, UserOrderViewSet,AdminOrderViewSet,
     delete_item, IngredientsList,\
     add_custom_burger_to_cart, remove_ingredient_from_cart, \
     LoginView, LogoutView, UserProfileView, CsrfTokenView, update_order_status,\
-    get_status_choices, ReviewListCreateView, get_average_rating, register, request_password_reset,\
+    get_status_choices, ReviewListCreateView, get_average_rating, register, password_reset,\
     confirm_password_reset\
 
 
@@ -44,7 +44,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('reviews/<int:dish_id>/', ReviewListCreateView.as_view()),
     path('average-rating/<int:dish_id>/', get_average_rating, name='average_rating'),
-    path('password-reset/', request_password_reset, name='request_password_reset'),
+    path('password-reset/', password_reset, name='password_reset'),
     path('password-reset-confirm/', confirm_password_reset,name='confirm_password_reset'),
 
 
