@@ -40,7 +40,12 @@ from django.contrib.auth import authenticate
 import json
 from rest_framework.permissions import IsAdminUser
 
+from rest_framework.decorators import (
+    api_view,
+    permission_classes
+)
 
+from rest_framework.permissions import AllowAny
 
 
 class LoginSerializer(serializers.Serializer):
@@ -425,6 +430,7 @@ def get_average_rating(request, dish_id):
 
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 
 def password_reset(request):
     email = request.data.get("email")
@@ -463,6 +469,7 @@ def password_reset(request):
         )
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 
 
 def confirm_password_reset(request):

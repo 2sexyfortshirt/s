@@ -7,7 +7,7 @@ from .views import MenuViewSet, DishViewSet, UserOrderViewSet,AdminOrderViewSet,
     delete_item, IngredientsList,\
     add_custom_burger_to_cart, remove_ingredient_from_cart, \
     LoginView, LogoutView, UserProfileView, CsrfTokenView, update_order_status,\
-    get_status_choices, ReviewListCreateView, get_average_rating, register, password_reset,\
+    get_status_choices, ReviewListCreateView, get_average_rating, register,password_reset,\
     confirm_password_reset\
 
 
