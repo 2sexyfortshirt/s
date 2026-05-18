@@ -1,0 +1,236 @@
+
+.cart-overlay {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  background:
+    radial-gradient(circle at top, #1f1f1f, #0a0a0a);
+}
+
+.cart-modal {
+  width: 100%;
+  max-width: 700px;
+
+  background: rgba(255,255,255,0.06);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(18px);
+
+  border-radius: 30px;
+
+  padding: 35px;
+
+  box-shadow:
+    0 0 40px rgba(255,152,0,0.12),
+    0 10px 40px rgba(0,0,0,0.45);
+
+  color: white;
+}
+
+.cart-modal h2 {
+  text-align: center;
+  margin-bottom: 30px;
+
+  font-size: 34px;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #bbb;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+.cart-item {
+  background: rgba(255,255,255,0.05);
+
+  border-radius: 18px;
+
+  padding: 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 0.25s ease;
+}
+
+.cart-item:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.cart-info h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.cart-info p {
+  margin-top: 6px;
+  color: #ff9800;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qty-btn {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.08);
+
+  color: white;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.qty-btn:hover {
+  background: #ff9800;
+}
+
+.qty-number {
+  min-width: 24px;
+  text-align: center;
+}
+
+.remove-btn {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: rgba(255,80,80,0.15);
+
+  color: #ff6b6b;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: 0.2s ease;
+}
+
+.remove-btn:hover {
+  background: #ff4d4d;
+  color: white;
+}
+
+.cart-total {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.cart-total h3 {
+  font-size: 28px;
+  color: #ff9800;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  height: 58px;
+
+  border-radius: 16px;
+
+  border: 1px solid transparent;
+
+  outline: none;
+
+  background: rgba(255,255,255,0.07);
+
+  color: white;
+
+  font-size: 15px;
+
+  padding:
+    18px 16px 0 16px;
+
+  box-sizing: border-box;
+
+  transition: 0.25s ease;
+}
+
+.input-group label {
+  position: absolute;
+
+  left: 16px;
+  top: 18px;
+
+  color: #aaa;
+
+  pointer-events: none;
+
+  transition: 0.2s ease;
+
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  border-color: #ff9800;
+
+  background: rgba(255,255,255,0.1);
+
+  box-shadow:
+    0 0 18px rgba(255,152,0,0.18);
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: 8px;
+  font-size: 11px;
+  color: #ff9800;
+}
+
+.checkout-btn {
+  width: 100%;
+  height: 58px;
+
+  border: none;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(135deg, #ff9800, #ff6f00);
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 24px rgba(255,152,0,0.3);
+}
+

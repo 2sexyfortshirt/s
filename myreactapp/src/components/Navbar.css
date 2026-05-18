@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 14px 24px;
   background-color: #111;
   color: #fff;
   position: relative;
@@ -10,50 +10,94 @@
 
 .navbar .nav-link {
   color: #fff;
-  margin-right: 20px;
+  margin-right: 18px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.2s;
 }
 
-.navbar .cart-icon {
-  position: relative;
-  cursor: pointer;
-}
-
-.mini-cart {
-  position: absolute;
-  top: 30px;
-  right: 0;
-  background: #222;
-  border: 1px solid #555;
-  padding: 10px;
-  min-width: 150px;
-  z-index: 100;
-}
-
-.mini-cart-item {
-  padding: 5px 0;
-  border-bottom: 1px solid #444;
-}
-
-.mini-cart-item:last-child {
-  border-bottom: none;
+.navbar .nav-link:hover {
+  color: #ff9800;
 }
 
 .auth-block {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
-
 .nav-button {
-  background: #ff9800;
+  background: linear-gradient(135deg, #ff9800, #ff6f00);
   border: none;
-  padding: 5px 10px;
+  min-width: 100px;
+  height: 42px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 5px;
+
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.3s ease;
 }
 
-.username {
+.nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 152, 0, 0.35);
+
+  background: linear-gradient(135deg, #ffad33, #ff8800);
+}
+
+.nav-button:active {
+  transform: scale(0.97);
+}
+
+.username {  color: #f1f1f1;  font-size: 14px;  font-weight: 500;  padding: 6px 12px;  background: rgba(255,255,255,0.08);  border-radius: 10px;  backdrop-filter: blur(4px);}
+
+.auth-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar .cart-icon {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.mini-cart {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: #222;
+  border: 1px solid #555;
+  padding: 12px;
+  min-width: 180px;
+  border-radius: 10px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.mini-cart-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #444;
   font-size: 14px;
+}
+
+.mini-cart-item:last-child {
+  border-bottom: none;
 }

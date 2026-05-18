@@ -1,111 +1,187 @@
-import { useEffect,useState } from "react";
-import api from "../api";
+
+import { useState } from "react";
+import "./Cart.css";
 
 import { useCart } from "../context/CartContext";
 
+function Cart() {
 
-
-function Cart () {
-
-
-  const {cart,updateQuantity,removeItem, createOrder, totalPrice } = useCart();
+  const {
+    cart,
+    updateQuantity,
+    removeItem,
+    createOrder,
+    totalPrice
+  } = useCart();
 
   const [phone, setPhone] = useState("");
-const [address, setAddress] = useState("");
+  const [address, setAddress] = useState("");
 
-const handleOrder = async () => {
-  const res = await createOrder(phone, address);
+  const handleOrder = async () => {
 
-  if (res?.id) {
-    alert("Заказ оформлен ✅");
-  } else {
-    alert("Ошибка ❌");
-  }
-};
+    const res = await createOrder(
+      phone,
+      address
+    );
 
+    if (res?.id) {
+      alert("Заказ оформлен ✅");
+    } else {
+      alert("Ошибка ❌");
+    }
+  };
 
- return (
-  <div style={{ padding: 20 }}>
-    <h2>Cart</h2>
+  return (
 
-    {cart.length === 0 ? (
-      <p>Cart is empty</p>
-    ) : (
-      <>
-        {cart.map(item => (
-          <div
-            key={item.id}
-            style={{ marginBottom: 10 }}
-          >
-            <h3>{item.dish.name}</h3>
-            <p>Price: ${item.dish.price}</p>
+    <div className="cart-overlay">
 
-            <div
-              style={{
-                display: "flex",
-                gap: "10px",
-                alignItems: "center",
-              }}
-            >
-              {/* ➖ */}
-              <button
-                onClick={() => {
-                  if (item.quantity === 1) {
-                    removeItem(item.id);
-                  } else {
-                    updateQuantity(item.id, item.quantity - 1);
-                  }
-                }}
-              >
-                -
-              </button>
+      <div className="cart-modal">
 
-              <span>{item.quantity}</span>
+        <h2>Your Cart</h2>
 
-              {/* ➕ */}
-              <button
-                onClick={() =>
-                  updateQuantity(item.id, item.quantity + 1)
-                }
-              >
-                +
-              </button>
+        {cart.length === 0 ? (
 
-              {/* 🗑 */}
-              <button
-                className="remove-btn"
-                onClick={() => removeItem(item.id)}
-              >
-                ✕
-              </button>
+          <p className="empty-cart">
+            Cart is empty
+          </p>
+
+        ) : (
+
+          <>
+
+            <div className="cart-items">
+
+              {cart.map(item => (
+
+                <div
+                  key={item.id}
+                  className="cart-item"
+                >
+
+                  <div className="cart-info">
+
+                    <h3>
+                      {item.dish.name}
+                    </h3>
+
+                    <p>
+                      ${item.dish.price}
+                    </p>
+
+                  </div>
+
+                  <div className="cart-controls">
+
+                    {/* ➖ */}
+                    <button
+                      className="qty-btn"
+                      onClick={() => {
+
+                        if (item.quantity === 1) {
+                          removeItem(item.id);
+                        } else {
+                          updateQuantity(
+                            item.id,
+                            item.quantity - 1
+                          );
+                        }
+                      }}
+                    >
+                      −
+                    </button>
+
+                    <span className="qty-number">
+                      {item.quantity}
+                    </span>
+
+                    {/* ➕ */}
+                    <button
+                      className="qty-btn"
+                      onClick={() =>
+                        updateQuantity(
+                          item.id,
+                          item.quantity + 1
+                        )
+                      }
+                    >
+                      +
+                    </button>
+
+                    {/* 🗑 */}
+                    <button
+                      className="remove-btn"
+                      onClick={() =>
+                        removeItem(item.id)
+                      }
+                    >
+                      ✕
+                    </button>
+
+                  </div>
+
+                </div>
+
+              ))}
+
             </div>
-          </div>
-        ))}
 
-        {/* 👇 форма заказа */}
-        <div style={{ marginTop: "30px" }}>
-          <h3>Total: ${totalPrice}</h3>
+            {/* TOTAL */}
+            <div className="cart-total">
 
-          <input
-            placeholder="Phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
+              <h3>
+                Total: ${totalPrice}
+              </h3>
 
-          <input
-            placeholder="Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
+            </div>
 
-          <button onClick={handleOrder}>
-            Checkout
-          </button>
-        </div>
-      </>
-    )}
-  </div>
-);
+            {/* PHONE */}
+            <div className="input-group">
+
+              <input
+                type="text"
+                placeholder=" "
+                value={phone}
+                onChange={(e) =>
+                  setPhone(e.target.value)
+                }
+              />
+
+              <label>Phone</label>
+
+            </div>
+
+            {/* ADDRESS */}
+            <div className="input-group">
+
+              <input
+                type="text"
+                placeholder=" "
+                value={address}
+                onChange={(e) =>
+                  setAddress(e.target.value)
+                }
+              />
+
+              <label>Address</label>
+
+            </div>
+
+            <button
+              className="checkout-btn"
+              onClick={handleOrder}
+            >
+              Checkout
+            </button>
+
+          </>
+
+        )}
+
+      </div>
+
+    </div>
+  );
 }
 
 export default Cart;
+

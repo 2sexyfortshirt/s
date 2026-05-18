@@ -49,7 +49,7 @@ function Navbar() {
             <button className="nav-button" onClick={logout}>
               Logout
             </button>
-             <button onClick={() => navigate("/profile")}>
+             <button  className="nav-button" onClick={() => navigate("/profile")}>
     Profile
   </button>
           </div>
@@ -61,7 +61,8 @@ function Navbar() {
           >
             Login
           </button>
-          <button onClick={() => navigate("/register")}>
+          <button  className="nav-button"
+           onClick={() => navigate("/register")}>
   Register
 </button>
 </div>
