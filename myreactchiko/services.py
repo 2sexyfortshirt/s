@@ -99,13 +99,16 @@ def send_password_reset_email(email):
         f"https://s-production-7378.up.railway.app/"
         f"reset/{uid}/{token}/"
     )
-    send_mail(
+    result = send_mail(
         "Password Reset",
         f"Reset link: {reset_link}",
         "whosdefirst@gmail.com",
         [email],
         fail_silently=False,
     )
+    print("MAIL RESULT:", result)
+    print("RESET LINK:", reset_link)
+
 
 
 
