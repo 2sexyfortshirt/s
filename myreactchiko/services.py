@@ -88,17 +88,26 @@ User = get_user_model()
 
 
 def send_password_reset_email(email):
+    print("STEP 1 EMAIL:", email)
+
     try:
         user = User.objects.get(email=email)
+        print("STEP 2 USER FOUND:", user.email)
 
     except User.DoesNotExist:
+        print("STEP 2 USER NOT FOUND")
         return
+
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     token = default_token_generator.make_token(user)
+
     reset_link = (
         f"https://s-production-7378.up.railway.app/"
         f"reset/{uid}/{token}/"
     )
+
+    print("STEP 3 BEFORE SEND MAIL")
+
     result = send_mail(
         "Password Reset",
         f"Reset link: {reset_link}",
@@ -106,10 +115,9 @@ def send_password_reset_email(email):
         [email],
         fail_silently=False,
     )
+
     print("MAIL RESULT:", result)
-    print("RESET LINK:", reset_link)
-
-
+    print("STEP 4 DONE")
 
 
 def confirm_password_reset(uid,token,new_password):
