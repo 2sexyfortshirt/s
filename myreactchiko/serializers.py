@@ -175,3 +175,11 @@ class OrderStatusUpdateSerializer(serializers.ModelSerializer):
         instance.status = validated_data['status']
         instance.save()
         return instance
+
+class PasswordResetSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+class ConfirmPasswordResetSerializer(serializers.Serializer):
+    uid = serializers.CharField()
+    token = serializers.CharField()
+    new_password = serializers.CharField(min_length=8)

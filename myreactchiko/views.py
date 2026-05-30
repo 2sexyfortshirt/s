@@ -17,7 +17,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework import generics
 from .models import Menu, Dish,Cart,CartItem
 from .serializers import MenuSerializer, DishSerializer
-from .services import add_to_cart_service,OrderService
+from .services import add_to_cart_service,OrderService,send_password_reset_email,confirm_password_reset
 from django.shortcuts import get_object_or_404
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.utils.encoding import force_bytes
@@ -28,7 +28,8 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework import status
 from .models import Dish, Cart, CartItem,Order,Ingredients,Review
-from .serializers import CartSerializer,CartItemSerializer,OrderSerializer,IngredientsSerializer,CustomBurgerSerializer,LoginSerializer,UserSerializer,OrderStatusUpdateSerializer,LogoutSerializer,ReviewSerializer
+from .serializers import CartSerializer,CartItemSerializer,OrderSerializer,IngredientsSerializer,CustomBurgerSerializer,LoginSerializer,UserSerializer,\
+    OrderStatusUpdateSerializer,LogoutSerializer,ReviewSerializer,PasswordResetSerializer,ConfirmPasswordResetSerializer
 import random
 import time
 
@@ -433,64 +434,26 @@ def get_average_rating(request, dish_id):
 @permission_classes([AllowAny])
 
 def password_reset(request):
-    email = request.data.get("email")
+    serializer = (PasswordResetSerializer(data=request.data))
+    serializer.is_valid(raise_exception=True)
 
-    try:
-        user = User.objects.get(email=email)
-
-        uid = urlsafe_base64_encode(force_bytes(user.pk))
-        token = default_token_generator.make_token(user)
-
-        reset_link = (
-            f"https://s-production-7378.up.railway.app/"
-            f"reset/{uid}/{token}/"
-        )
-
-        send_mail(
-            "Password Reset",
-            f"Reset link: {reset_link}",
-            "whosdefirst@gmail.com",
-            [email],
-            fail_silently=False,
-        )
-
-        return Response({"message": "Email sent"})
-
-    except User.DoesNotExist:
-        return Response(
-            {"error": "User not found"},
-            status=404
-        )
-
-    except Exception as e:
-        return Response(
-            {"error": str(e)},
-            status=500
-        )
+    send_password_reset_email(serializer.validated_data["email"])
+    return Response({
+        "message": "If the account exists,an email has been sent "
+    })
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
 
 
 def confirm_password_reset(request):
-    uid = request.data.get("uid")
-    token = request.data.get("token")
-    new_password = request.data.get("new_password")
-
+    serializer = (ConfirmPasswordResetSerializer(data=request.data))
+    serializer.is_valid(raise_exception=True)
     try:
-        user_id = urlsafe_base64_decode(uid).decode()
-        user = User.objects.get(pk=user_id)
-        print("UID:", uid)
-        print("TOKEN:", token)
-
-    except:
-
-        return Response({"error": "Invalid token"},status=400)
-
-
-    if not default_token_generator.check_token(user, token):
-        return Response({"error":"invalid token"},status=400)
-    user.set_password(new_password)
-    user.save()
-    return Response({"success": True})
-
+        confirm_password_reset(uid=serializer.validated_data["uid"],
+        token=serializer.validated_data["token"],
+        new_password=serializer.validated_data["new_password"],)
+    except ValueError as e:
+        return Response({
+            "message":"Password updated successfully"
+        })

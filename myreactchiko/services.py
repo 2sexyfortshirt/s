@@ -1,4 +1,11 @@
 from .models import Cart,CartItem,Dish,Ingredients,Order
+from django.contrib.auth import get_user_model
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.password_validation import validate_password
+from django.core.mail import send_mail
+from django.utils.encoding import force_bytes
+from django.utils.http import (urlsafe_base64_encode,urlsafe_base64_decode,)
+
 
 
 
@@ -73,3 +80,52 @@ class OrderService:
         cart.save()
 
         return order
+
+
+
+
+User = get_user_model()
+
+
+def send_password_reset_email(email):
+    try:
+        user = User.objects.get(email=email)
+
+    except User.DoesNotExist:
+        return
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    token = default_token_generator.make_token(user)
+    reset_link = (
+        f"https://s-production-7378.up.railway.app/"
+        f"reset/{uid}/{token}/"
+    )
+    send_mail(
+        "Password Reset",
+        f"Reset link: {reset_link}",
+        "whosdefirst@gmail.com",
+        [email],
+        fail_silently=False,
+    )
+
+
+
+def confirm_password_reset(uid,token,new_password):
+    try:
+
+        user_id = (urlsafe_base64_decode(uid).decode()
+                   )
+        user = User.objects.get(pk=user_id)
+    except(
+        User.DoesNotExist,
+        ValueError,TypeError,
+
+    ):
+        raise ValueError("Invalid reset link")
+
+    if not default_token_generator.check_token(user, token,):
+        raise ValueError(
+            "Invalid or expired token "
+        )
+    validate_password(new_password,user)
+    user.set_password(new_password)
+    user.save(update_fields=["password"])

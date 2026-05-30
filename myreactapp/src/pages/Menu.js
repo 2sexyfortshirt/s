@@ -52,39 +52,58 @@ function Menu() {
   }
 
   // 🔥 2. ЕСЛИ категория выбрана → показываем блюда
-  return (
-    <div className="menu-container">
-    <button
-      className="back-button"
-      onClick={() => setSelectedCategory(null)}
-    >
-      ⬅ Back
-    </button>
 
-    <h2 className="selected-title">
-      {selectedCategory.dish_type}
-    </h2>
+
+return (
+  <div className="menu-container">
+
+    <div className="menu-header">
+
+      <button
+        className="back-button"
+        onClick={() => setSelectedCategory(null)}
+      >
+        ← Back
+      </button>
+
+      <h2 className="selected-title">
+        {selectedCategory.dish_type}
+      </h2>
+
+    </div>
+
     <input
-  type="text"
-  placeholder="🔍 Search dishes..."
-  value={search}
-  onChange={(e) => setSearch(e.target.value)}
-  className="search-input"
-/>
+      type="text"
+      placeholder="🔍 Search dishes..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="search-input"
+    />
 
     <div className="dish-grid">
+
       {selectedCategory.dishes
-  .filter(dish =>
-    dish.name.toLowerCase().includes(search.toLowerCase())).map(dish => (
-        <ProductCard
-          key={dish.id}
-          product={dish}
-          addToCart={addToCart}
-        />
+        .filter(dish =>
+          dish.name
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        )
+        .map(dish => (
+
+          <ProductCard
+            key={dish.id}
+            product={dish}
+            addToCart={addToCart}
+          />
+
       ))}
+
     </div>
+
   </div>
 );
+
 }
+
 
 export default Menu;

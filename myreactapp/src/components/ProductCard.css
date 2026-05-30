@@ -1,31 +1,81 @@
+
 /* ============================= */
 /* 🍔 PRODUCT CARD */
 /* ============================= */
 
 .product-card {
+  position: relative;
+
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
 
-  background: var(--bg-card); /* вместо белого */
-  border: 1px solid var(--border);
-
-  border-radius: 18px;
   overflow: hidden;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.03)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.35);
 
   display: flex;
   flex-direction: column;
 
-  transition: all 0.3s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
-.product-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  background: var(--bg-hover);
-  border-color: var(--accent);
 
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+/* 🔥 glow */
+.product-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  top: -120px;
+  right: -120px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,122,0,0.18),
+      transparent 70%
+    );
+
+  transition: 0.4s ease;
+}
+
+
+/* ✨ hover */
+.product-card:hover {
+  transform:
+    translateY(-10px)
+    scale(1.02);
+
+  border-color:
+    rgba(255,122,0,0.35);
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.5);
+}
+
+.product-card:hover::before {
+  transform: scale(1.15);
 }
 
 
@@ -35,26 +85,44 @@
 
 .product-card img {
   width: 100%;
-  height: 170px;
+  height: 220px;
+
   object-fit: cover;
+
+  transition:
+    transform 0.45s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.06);
 }
 
 
 /* ============================= */
-/* 📝 TEXT */
+/* 📝 CONTENT */
+/* ============================= */
+
+.product-card-content {
+  position: relative;
+  z-index: 2;
+
+  padding: 18px;
+}
+
+
+/* ============================= */
+/* 🍽 TITLE */
 /* ============================= */
 
 .product-card h3 {
-  font-size: 17px;
-  margin: 12px 12px 6px;
-  font-weight: 600;
-  color: var(--text-main);
-}
+  margin: 0 0 10px;
 
-.product-card p {
-  margin: 0 12px 8px;
-  color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 22px;
+  font-weight: 700;
+
+  color: white;
+
+  letter-spacing: 0.5px;
 }
 
 
@@ -62,10 +130,13 @@
 /* 💰 PRICE */
 /* ============================= */
 
-.product-card p:nth-of-type(1) {
-  font-weight: bold;
-  color: var(--accent);
-  font-size: 16px;
+.product-card .price {
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #ff9a3d;
+
+  margin-bottom: 10px;
 }
 
 
@@ -73,41 +144,50 @@
 /* ⭐ RATING */
 /* ============================= */
 
-.product-card p:nth-of-type(2) {
-  font-size: 14px;
+.product-card .rating {
+  font-size: 15px;
+
   color: #f1c40f;
+
+  margin-bottom: 16px;
 }
 
-.product-card img {
-  transition: 0.3s;
-}
 
-.product-card:hover img {
-  transform: scale(1.05);
-}
 /* ============================= */
-/* 🔘 ADD TO CART BUTTON */
+/* 🔘 BUTTON */
 /* ============================= */
 
 .product-card button {
-  margin: 10px 12px;
-  padding: 10px;
+  width: 100%;
+  height: 52px;
 
   border: none;
-  border-radius: 10px;
+  border-radius: 16px;
 
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  background:
+    linear-gradient(
+      135deg,
+      #ff9800,
+      #ff6f00
+    );
+
   color: white;
 
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
+
   cursor: pointer;
 
-  transition: 0.2s;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .product-card button:hover {
-  transform: scale(1.03);
-  opacity: 0.95;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 24px rgba(255,152,0,0.3);
 }
 
 
@@ -116,21 +196,46 @@
 /* ============================= */
 
 .reviews {
-  padding: 0 12px;
-  max-height: 110px;
+  margin-top: 18px;
+
+  max-height: 140px;
+
   overflow-y: auto;
 
-  font-size: 13px;
-  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.reviews div {
-  background: #111; /* вместо светлого */
-  padding: 6px 8px;
-  border-radius: 8px;
-  margin-bottom: 6px;
 
-  border: 1px solid var(--border);
+/* scrollbar */
+.reviews::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reviews::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+
+
+/* single review */
+.reviews div {
+  padding: 10px 12px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255,255,255,0.04);
+
+  border:
+    1px solid rgba(255,255,255,0.05);
+
+  color: #d5d5d5;
+
+  font-size: 13px;
+
+  line-height: 1.5;
 }
 
 
@@ -139,57 +244,61 @@
 /* ============================= */
 
 .review-form {
-  padding: 10px 12px 14px;
+  margin-top: 18px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid rgba(255,255,255,0.06);
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
-
-  border-top: 1px solid var(--border);
+  gap: 12px;
 }
 
 
 /* textarea */
 .review-form textarea {
+  width: 100%;
   box-sizing: border-box;
 
-  padding: 10px 12px;
-  border-radius: 10px;
+  min-height: 90px;
 
-  border: 1px solid #333;
+  padding: 14px;
+
+  border-radius: 16px;
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  background:
+    rgba(255,255,255,0.05);
+
+  backdrop-filter: blur(12px);
+
+  color: white;
 
   font-size: 14px;
   font-family: inherit;
 
   resize: none;
-  min-height: 70px;
 
-  background: #111;
-  color: white;
-
-  transition: 0.2s;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .review-form textarea::placeholder {
-  color: #777;
+  color: #8a8a8a;
 }
 
-/* focus */
 .review-form textarea:focus {
   outline: none;
-  border-color: var(--accent);
 
-  box-shadow: 0 0 0 3px rgba(255,122,0,0.2);
-}
+  border-color: #ff9800;
 
-
-/* submit button */
-.review-form button {
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
-}
-
-.review-form button:hover {
-  transform: scale(1.03);
+  box-shadow:
+    0 0 18px rgba(255,152,0,0.18);
 }
 
 
@@ -199,14 +308,19 @@
 
 .star-input {
   display: flex;
-  gap: 4px;
-  font-size: 20px;
-  cursor: pointer;
+  gap: 8px;
+
+  font-size: 24px;
 }
 
 .star {
   color: #555;
-  transition: 0.2s;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .star:hover {
@@ -219,7 +333,7 @@
 
 
 /* ============================= */
-/* 🧠 TEXTAREA COUNTER */
+/* 🧠 COUNTER */
 /* ============================= */
 
 .textarea-wrapper {
@@ -228,9 +342,12 @@
 
 .textarea-wrapper span {
   position: absolute;
-  right: 10px;
-  bottom: 6px;
+
+  right: 12px;
+  bottom: 10px;
 
   font-size: 11px;
-  color: #777;
+
+  color: #8a8a8a;
 }
+

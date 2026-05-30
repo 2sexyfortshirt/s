@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5145bfce-f502-4f2d-bb0c-7667eb08b0f5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/myreactapp/build/static/js/main.cacfa903.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myreactapp/build/static/js/main.cacfa903.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myreactapp/build/static/js/main.cacfa903.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myreactapp/src/pages/ForgotPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/pages/ForgotPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/css/main.f2ce4985.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/css/main.f2ce4985.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.8fcabe03.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.8fcabe03.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/build/static/js/main.8fcabe03.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/src/components/ProductCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/components/ProductCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/src/pages/Menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/pages/Menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactapp/src/pages/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/myreactapp/src/pages/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactchiko/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactchiko/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myreactchiko/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myreactchiko/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -422,7 +437,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/myreactchiko/views.py</url>
-          <line>284</line>
+          <line>285</line>
           <option name="timeStamp" value="1445" />
         </line-breakpoint>
       </breakpoints>
