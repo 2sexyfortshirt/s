@@ -97,37 +97,29 @@ print("DEBUG EMAIL BACKEND:", settings.EMAIL_BACKEND)
 
 
 def send_password_reset_email(email):
-    print("STEP 1 EMAIL:", email)
-
     try:
         user = User.objects.get(email=email)
-        print("STEP 2 USER FOUND:", user.email)
-
     except User.DoesNotExist:
-        print("STEP 2 USER NOT FOUND")
         return
 
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     token = default_token_generator.make_token(user)
 
-    reset_link = (
-        f"https://s-production-7378.up.railway.app/"
-        f"reset/{uid}/{token}/"
+    reset_link = f"https://s-production-7378.up.railway.app/reset/{uid}/{token}/"
+
+    message = Mail(
+        from_email="whosdefirst@gmail.com",
+        to_emails=email,
+        subject="Password Reset",
+        html_content=f"Reset link: {reset_link}"
     )
 
-    print("STEP 3 BEFORE SEND MAIL")
-
-    result = send_mail(
-        "Password Reset",
-        f"Reset link: {reset_link}",
-        "whosdefirst@gmail.com",
-        [email],
-        fail_silently=False,
-    )
-
-    print("MAIL RESULT:", result)
-    print("STEP 4 DONE")
-
+    try:
+        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
+        response = sg.send(message)
+        print("SENDGRID STATUS:", response.status_code)
+    except Exception as e:
+        print("SENDGRID ERROR:", str(e))
 
 def confirm_password_reset(uid,token,new_password):
     try:
@@ -148,4 +140,4 @@ def confirm_password_reset(uid,token,new_password):
         )
     validate_password(new_password,user)
     user.set_password(new_password)
-    user.save(update_fields=["password"])
+    user.save()
