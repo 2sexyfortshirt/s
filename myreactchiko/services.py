@@ -5,6 +5,9 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.mail import send_mail
 from django.utils.encoding import force_bytes
 from django.utils.http import (urlsafe_base64_encode,urlsafe_base64_decode,)
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+import os
 
 
 
@@ -85,6 +88,12 @@ class OrderService:
 
 
 User = get_user_model()
+
+import os
+from django.conf import settings
+
+print("DEBUG SENDGRID KEY:", os.environ.get("SENDGRID_API_KEY"))
+print("DEBUG EMAIL BACKEND:", settings.EMAIL_BACKEND)
 
 
 def send_password_reset_email(email):
