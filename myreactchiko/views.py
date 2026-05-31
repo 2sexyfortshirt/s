@@ -444,8 +444,6 @@ def password_reset(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-
-@api_view(["POST"])
 def confirm_password_reset(request):
     serializer = ConfirmPasswordResetSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
