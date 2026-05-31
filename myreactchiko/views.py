@@ -445,15 +445,24 @@ def password_reset(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 
-
+@api_view(["POST"])
 def confirm_password_reset(request):
-    serializer = (ConfirmPasswordResetSerializer(data=request.data))
+    serializer = ConfirmPasswordResetSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
+
     try:
-        confirm_password(uid=serializer.validated_data["uid"],
-        token=serializer.validated_data["token"],
-        new_password=serializer.validated_data["new_password"],)
-    except ValueError as e:
+        confirm_password(
+            uid=serializer.validated_data["uid"],
+            token=serializer.validated_data["token"],
+            new_password=serializer.validated_data["new_password"],
+        )
+
         return Response({
-            "message":"Password updated successfully"
+            "message": "Password updated successfully"
         })
+
+    except ValueError as e:
+        return Response(
+            {"error": str(e)},
+            status=400
+        )
