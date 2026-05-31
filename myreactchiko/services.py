@@ -123,7 +123,7 @@ def send_password_reset_email(email):
     except Exception as e:
         print("SENDGRID ERROR:", str(e))
 
-def confirm_password(uid,token,new_password):
+def confirm_password_service(uid, token, new_password):
     print("UID:", uid)
     print("TOKEN:", token)
     print("PASSWORD:", new_password)
@@ -136,23 +136,22 @@ def confirm_password(uid,token,new_password):
         print("USER:", user)
 
     except Exception as e:
-        print("DECODE ERROR:", e)
-        raise ValueError("Invalid reset link")
+        print("ERROR 1:", str(e))
+        raise
 
-    token_ok = default_token_generator.check_token(user, token)
-    print("TOKEN VALID:", token_ok)
+    print("CHECKING TOKEN")
 
-    if not token_ok:
+    if not default_token_generator.check_token(user, token):
+        print("TOKEN INVALID")
         raise ValueError("Invalid or expired token")
 
-    try:
-        validate_password(new_password, user)
-        print("PASSWORD VALID")
-    except Exception as e:
-        print("PASSWORD ERROR:", e)
-        raise
+    print("TOKEN OK")
+
+    validate_password(new_password, user)
+
+    print("PASSWORD VALID")
 
     user.set_password(new_password)
     user.save()
 
-    print("PASSWORD CHANGED")
+    print("PASSWORD SAVED")
