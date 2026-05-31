@@ -8,6 +8,8 @@ from django.utils.http import (urlsafe_base64_encode,urlsafe_base64_decode,)
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
+from django.core.exceptions import ValidationError
+
 
 
 
@@ -121,7 +123,7 @@ def send_password_reset_email(email):
     except Exception as e:
         print("SENDGRID ERROR:", str(e))
 
-def confirm_password_reset(uid,token,new_password):
+def confirm_password(uid,token,new_password):
     try:
 
         user_id = (urlsafe_base64_decode(uid).decode()
@@ -138,6 +140,8 @@ def confirm_password_reset(uid,token,new_password):
         raise ValueError(
             "Invalid or expired token "
         )
-    validate_password(new_password,user)
-    user.set_password(new_password)
-    user.save()
+    try:
+        validate_password(new_password, user)
+    except ValidationError as e:
+        print("PASSWORD ERROR:", e.messages)
+        raise ValueError(", ".join(e.messages))

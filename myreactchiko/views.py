@@ -17,7 +17,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework import generics
 from .models import Menu, Dish,Cart,CartItem
 from .serializers import MenuSerializer, DishSerializer
-from .services import add_to_cart_service,OrderService,send_password_reset_email,confirm_password_reset
+from .services import add_to_cart_service,OrderService,send_password_reset_email,confirm_password
 from django.shortcuts import get_object_or_404
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.utils.encoding import force_bytes
@@ -450,7 +450,7 @@ def confirm_password_reset(request):
     serializer = (ConfirmPasswordResetSerializer(data=request.data))
     serializer.is_valid(raise_exception=True)
     try:
-        confirm_password_reset(uid=serializer.validated_data["uid"],
+        confirm_password(uid=serializer.validated_data["uid"],
         token=serializer.validated_data["token"],
         new_password=serializer.validated_data["new_password"],)
     except ValueError as e:
