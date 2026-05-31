@@ -124,24 +124,35 @@ def send_password_reset_email(email):
         print("SENDGRID ERROR:", str(e))
 
 def confirm_password(uid,token,new_password):
+    print("UID:", uid)
+    print("TOKEN:", token)
+    print("PASSWORD:", new_password)
+
     try:
+        user_id = urlsafe_base64_decode(uid).decode()
+        print("USER ID:", user_id)
 
-        user_id = (urlsafe_base64_decode(uid).decode()
-                   )
         user = User.objects.get(pk=user_id)
-    except(
-        User.DoesNotExist,
-        ValueError,TypeError,
+        print("USER:", user)
 
-    ):
+    except Exception as e:
+        print("DECODE ERROR:", e)
         raise ValueError("Invalid reset link")
 
-    if not default_token_generator.check_token(user, token,):
-        raise ValueError(
-            "Invalid or expired token "
-        )
+    token_ok = default_token_generator.check_token(user, token)
+    print("TOKEN VALID:", token_ok)
+
+    if not token_ok:
+        raise ValueError("Invalid or expired token")
+
     try:
         validate_password(new_password, user)
-    except ValidationError as e:
-        print("PASSWORD ERROR:", e.messages)
-        raise ValueError(", ".join(e.messages))
+        print("PASSWORD VALID")
+    except Exception as e:
+        print("PASSWORD ERROR:", e)
+        raise
+
+    user.set_password(new_password)
+    user.save()
+
+    print("PASSWORD CHANGED")

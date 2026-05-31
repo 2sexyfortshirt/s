@@ -23,7 +23,8 @@ function ResetPassword() {
 
       alert("Password changed");
     } catch (err) {
-      console.error("❌ Error:", err.response?.data || err);
+     console.log("STATUS:", err.response?.status);
+    console.log("DATA:", err.response?.data);
       alert(err.response?.data?.error || "Error");
     }
   };
