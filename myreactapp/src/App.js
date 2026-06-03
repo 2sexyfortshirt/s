@@ -11,6 +11,7 @@ import Register from "./components/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Profile from "./pages/Profile";
 import ResetPassword from "./pages/ResetPassword";
+import Notifications from "./pages/Notifications";
 //import Login from "./auth/Login";
 
 
@@ -32,6 +33,10 @@ function App() {
   <Route path="/profile" element={<Profile />} />
   <Route path="/forgot" element={<ForgotPassword/>}/>
   <Route path="/reset/:uid/:token" element={<ResetPassword/>}/>
+  <Route
+  path="/notifications"
+  element={<Notifications />}
+/>
   </Routes>
   </BrowserRouter>
 

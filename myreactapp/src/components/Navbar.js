@@ -19,6 +19,11 @@ function Navbar() {
         <Link to="/menu" className="nav-link">Menu</Link>
         <Link to="/cart" className="nav-link">Cart</Link>
         <Link to="/" className="nav-link">Home</Link>
+        {user && (
+    <Link to="/notifications" className="nav-link">
+      🔔 Notifications
+    </Link>
+  )}
       </div>
 
       <div className="navbar-right">
@@ -49,6 +54,12 @@ function Navbar() {
             <button className="nav-button" onClick={logout}>
               Logout
             </button>
+            <button
+      className="nav-button"
+      onClick={() => navigate("/notifications")}
+    >
+      🔔 Notifications
+    </button>
              <button  className="nav-button" onClick={() => navigate("/profile")}>
     Profile
   </button>
@@ -65,6 +76,7 @@ function Navbar() {
            onClick={() => navigate("/register")}>
   Register
 </button>
+
 </div>
         )}
 

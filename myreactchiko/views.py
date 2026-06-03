@@ -366,7 +366,7 @@ class LogoutView(APIView):
         print("Serializer errors:", serializer.errors)  # Логируем ошибки сериализатора
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+from notifications.services import create_notification
 
 @api_view(['POST'])
 def register(request):
@@ -380,6 +380,11 @@ def register(request):
     if User.objects.filter(username=username,email=email).exists():
         return Response({"error": "User already exists"},status=400)
     user = User.objects.create_user(username=username,password=password,email=email)
+    create_notification(
+        user=user,
+        title="Welcome",
+        message="Welcome to MyChiko!"
+    )
     return Response({"success": True})
 class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
@@ -453,6 +458,11 @@ def confirm_password_reset(request):
             uid=serializer.validated_data["uid"],
             token=serializer.validated_data["token"],
             new_password=serializer.validated_data["new_password"],
+        )
+        create_notification(
+
+            title="Password changed",
+            message="Your password has been updated"
         )
 
         return Response({

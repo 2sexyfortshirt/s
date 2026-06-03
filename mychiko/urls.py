@@ -11,6 +11,7 @@ urlpatterns = [
 
     # API
     path('api/', include('myreactchiko.urls')),
+    path('api/notifications/', include("notifications.urls"))
 
     # React
 

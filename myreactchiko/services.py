@@ -9,6 +9,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
 from django.core.exceptions import ValidationError
+from notifications.services import create_notification
 
 
 
@@ -80,11 +81,17 @@ class OrderService:
             phone_number=phone_number,
             delivery_address=delivery_address,
         )
+        if user:
+            create_notification(
+                user=user,
+                title="Order created",
+                message=f"Order #{order.id} was created successfully"
+            )
 
-        cart.is_ordered = True
-        cart.save()
+            cart.is_ordered = True
+            cart.save()
 
-        return order
+            return order
 
 
 
